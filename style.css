@@ -1,0 +1,376 @@
+:root {
+  --text1: #1F130D;
+  --text2: #4A2E1F;
+  --text3: #5A3E2B;
+
+  --background: #fff8f2;
+  --background: #FFF3E8;
+
+  --button: #8b5e3c;
+  --button-hover: #725035;
+
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: var(--background);
+}
+
+.active {
+  background: black;
+  color: white;
+}
+
+.layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 250px;
+  min-width: 200px;
+  border-right: 1px solid #ccc;
+  padding-right: 15px;
+}
+
+.content {
+  flex: 1;
+}
+
+#products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+#products div {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 180px;
+}
+
+.card {
+  border: 2px solid #ccc;
+  padding: 10px;
+  cursor: pointer; 
+  transition: 0.2s;
+}
+
+.card:hover {
+  border-color: black;
+  transform: scale(1.03);
+}
+
+.card.active {
+  border: 2px solid black;
+  background: #f5f5f5;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* HERO фон */
+.hero {
+  height: 100vh;
+  background: url("images/cooki.png") no-repeat center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Напівпрозорий блок */
+.hero-overlay {
+  background: rgba(217, 217, 217, 0.6);
+  backdrop-filter: blur(0.05px);
+  padding: 40px 60px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 600px;
+}
+
+/* Заголовок */
+.hero-overlay h1 {
+  font-size: 48px;
+  font-family: serif;
+  margin-bottom: 20px;
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px); /* трохи вверх */
+    }
+    100% {
+        transform: translateY(0); /* назад вниз */
+    }
+}
+
+/* Текст */
+.hero-overlay p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  color: #5A3E2B;
+}
+
+.hero-overlay a {
+  color: var(--text2);
+  text-decoration: none;
+}
+
+.hero-overlay h1.text1{
+  margin-top: 1px;
+  font-family: "Italianno", cursive;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 96px;
+  color: var(--text2);
+}
+
+.text1 {
+  font-family: "Italianno", cursive;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 80px;
+  color: var(--text2);
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 97.5%;
+  background: rgba(255, 248, 242, 0.6);
+  backdrop-filter: blur(0.05px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  z-index: 10;
+}
+
+.header .logo {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.container1 {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    position: relative;
+    text-decoration: none;
+    color: var(--text2);
+    font-size: 20px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Плавна лінія під текстом */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background-color: #8b5e3c;
+    transition: width 0.3s ease;
+}
+
+/* Hover ефект */
+.nav-links a:hover {
+    color: #8b5e3c;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Легке збільшення */
+.nav-links a:hover {
+    transform: scale(1.05);
+}
+
+.header .cart-link {
+  color: var(--text2) !important;
+  font-size: 25px;
+  font-weight: 700;
+  text-decoration: none !important;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* From Uiverse.io by cssbuttons-io */ 
+.btn {
+  position: relative;
+  font-size: 17px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1em 2.5em;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 6em;
+  transition: all 0.2s;
+  border: none;
+  color: var(--text2);
+  background-color: white;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+/* From Uiverse.io by yaasiinaxmed */ 
+.button {
+  font-family: inherit;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 1px;
+  font-size: 17px;
+  z-index: 1;
+  color: var(--text2);
+  border: none;
+  border-radius: 50%;
+  position: relative;
+}
+
+.button::before {
+  position: absolute;
+  content: "";
+  background: var(--button);
+  width: 150px;
+  height: 200px;
+  z-index: -1;
+  border-radius: 100%;
+}
+
+.button:hover {
+  color: white;
+}
+
+.button:before {
+  top: 100%;
+  left: 100%;
+  transition: 0.3s all;
+}
+
+.button:hover::before {
+  top: -30px;
+  left: -30px;
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Дизайн самих карток */
+.card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card-image {
+    width: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-body h3 {
+    font-size: 18px;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+.card-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e44d26;
+}
+
+.card-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #6366f1;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+}
+
+.card-btn:hover {
+    background: #4f46e5;
+}
+
+/* Додаткові стилі для слайдера (запрацюють після підключення класів) */
+.swiper {
+    width: 100%;
+    padding-bottom: 50px;
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+    </style>
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+/>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+        <script>
+            fetch("header.html")
+            .then(res => res.text())
+            .then(data => {
+            document.getElementById("header-placeholder").innerHTML = data;
+            });
+        </script>
+    </div>
+
+<section class="hero">
+  <div class="hero-overlay">
+    <h1 class="text1">Golden Crumbs</h1>
+    <p>
+      Тут починається твій маленький солодкий ритуал.
+      Ми печемо печиво так, як це має бути — з теплом і любов’ю.
+    </p>
+    <button class="btn" onclick="button()">Створіть своє печиво</button>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h1>Популярні товари</h1>
+
+    <div class="swiper">
+        <div class="swiper-wrapper" id="swiper-wrapper">
+        </div>
+         <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+</div>
+</section>
+
+  <hr>
+
+  <section>
+    <h2>Чому саме ми?</h2>
+
+    <ul>
+      <li>🍪 Свіжа випічка щодня</li>
+      <li>🎨 Повна кастомізація</li>
+      <li>🚚 Швидка доставка</li>
+      <li>❤️ Натуральні інгредієнти</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Як це працює</h2>
+
+    <ol>
+      <li>Обери печиво</li>
+      <li>Додай декор</li>
+      <li>Отримай доставку</li>
+    </ol>
+  </section>
+
+  <hr>
+
+  <section>
+    
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Доставка і оплата</h2>
+
+    <p>🚚 Доставка по місту 1–2 дні</p>
+    <p>💳 Оплата при отриманні</p>
+    <p>📦 Акуратна упаковка</p>
+  </section>
+
+  <div id="header-placeholder"></div>
+<script src="products.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<script>
+
+  // Генерираємо перші 5 товарів
+  const firstFiveProducts = products.slice(0, 5);
+  const wrapper = document.getElementById('swiper-wrapper');
+
+  firstFiveProducts.forEach(product => {
+    const card = document.createElement('div');
+    card.className = 'card swiper-slide';
+    card.innerHTML = `
+      <img class="card-image" src="${product.image}" alt="${product.name}">
+      <div class="card-body">
+        <h3>${product.name}</h3>
+        <span class="card-price">${product.price} ₴</span><br>
+        <button class="card-btn">Додати в кошик</button>
+      </div>
+    `;
+    wrapper.appendChild(card);
+  });
+
+  const swiper = new Swiper('.swiper', { 
+        loop: true,
+        slidesPerView: 3, // Показуємо по 3 слайди одночасно
+        spaceBetween: 20,
+        autoplay: {
+            delay: 3000, // Автоматично гортати кожні 3 секунди
+         },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+          320: {
+              slidesPerView:1
+          },
+          700: {
+              slidesPerView:2
+          },
+          1000: {
+              slidesPerView:3
+          }
+      }
+
+        
+    });
+  
+
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header-placeholder").innerHTML = data;
+  });
+
+
+  function button() {
+    window.location.href = "cookieDesigner.html";
+  }
+</script>
+</body>
+</html>

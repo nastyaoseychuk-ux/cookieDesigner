@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошик</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+</head>
+<body>
+
+    <script>
+        fetch("header.html")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("header-placeholder").innerHTML = data;
+        });
+    </script>
+
+    <div id="header-placeholder"></div>
+
+    <h1>Кошик 🧺</h1>
+
+    <div id="cartItems"></div>
+
+    <h2 id="total"></h2>
+
+    <script src="cart.js"></script>
+    <script src="cart-page.js"></script>
+
+
+
+    <div id="header-placeholder"></div>
+
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header-placeholder").innerHTML = data;
+  });
+</script>
+
+</body>
+</html>

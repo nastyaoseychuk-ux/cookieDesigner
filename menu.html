@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+</head>
+<body>
+    <div id="header-placeholder"></div>
+        <script>
+            fetch("header.html")
+            .then(res => res.text())
+            .then(data => {
+            document.getElementById("header-placeholder").innerHTML = data;
+            });
+        </script>
+    </div>
+    <h1>Меню 🍪</h1>
+
+
+<div class="layout">
+
+  <div class="sidebar">
+    <h3>Категорії</h3>
+    <label>
+  <input type="checkbox" value="all" id="allFilter" checked>
+  Всі
+</label>
+
+<label>
+  <input type="checkbox" value="chocolate" class="category-filter">
+  Шоколадні
+</label>
+
+<label>
+  <input type="checkbox" value="vanilla" class="category-filter">
+  Ванільні
+</label>
+
+<label>
+  <input type="checkbox" value="fruit" class="category-filter">
+  Фруктові
+</label>
+
+<label>
+  <input type="checkbox" value="nuts" class="category-filter">
+  З горіхами
+</label>
+
+    <h3>Ціна</h3>
+    <select id="priceFilter">
+      <option value="all">Будь-яка</option>
+      <option value="0-50">До 50 грн</option>
+      <option value="50-60">50–60 грн</option>
+      <option value="60">60+ грн</option>
+    </select>
+  </div>
+
+  <div class="content">
+    <div id="products"></div>
+  </div>
+
+</div>
+<div id="header-placeholder"></div>
+
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header-placeholder").innerHTML = data;
+  });
+</script>
+
+<script src="cart.js"></script>
+<script src="products.js"></script>
+<script src="menu.js"></script>
+</body>
+</html>
