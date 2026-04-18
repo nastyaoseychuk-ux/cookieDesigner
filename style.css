@@ -309,6 +309,7 @@ body {
   left: -30px;
 }
 
+/* Стилізація всіх секцій зі схожим дизайном */
 .container {
     max-width: 900px;
     width: 100%;
@@ -373,4 +374,33 @@ h1 {
 .swiper {
     width: 100%;
     padding-bottom: 50px;
+}
+
+/* Стилізація параграфів, списків та іншого контенту */
+section p {
+    color: var(--text2);
+    line-height: 1.8;
+}
+
+section ul,
+section ol {
+    color: var(--text2);
+    text-align: left;
+    display: inline-block;
+}
+
+section ul li,
+section ol li {
+    margin: 10px 0;
+}
+
+/* Стилізація для Swiper слайдів */
+.swiper-button-prev,
+.swiper-button-next {
+    color: var(--button);
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 28px;
 }
