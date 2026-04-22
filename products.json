@@ -1,0 +1,122 @@
+[
+{
+    "id": 1,
+    "name": "Шоколадне печиво з маршмелоу",
+    "price": 55,
+    "description": "Ніжне шоколадне печиво з розтопленим маршмелоу всередині",
+    "image": "images/cooki1.png",
+    "category": "chocolate"
+  },
+  {
+    "id": 2,
+    "name": "Ванільне печиво з ягодами",
+    "price": 50,
+    "description": "Легке ванільне печиво з натуральними ягодами",
+    "image": "images/cooki2.png",
+    "category": "vanilla"
+  },
+  {
+    "id": 3,
+    "name": "Класичне печиво з посипкою",
+    "price": 40,
+    "description": "Традиційне печиво з кольоровою кондитерською посипкою",
+    "image": "images/cooki3.png",
+    "category": "classic"
+  },
+  {
+    "id": 4,
+    "name": "Подвійне шоколадне",
+    "price": 60,
+    "description": "Максимум шоколаду для справжніх фанатів",
+    "image": "images/cookie4.png",
+    "category": "chocolate"
+  },
+  {
+    "id": 5,
+    "name": "Карамельне печиво",
+    "price": 50,
+    "description": "Солодке печиво з карамельною начинкою",
+    "image": "images/cooki5.png",
+    "category": "caramel"
+  },
+  {
+    "id": 6,
+    "name": "Печиво з горіхами",
+    "price": 55,
+    "description": "Хрустке печиво з обсмаженими горіхами",
+    "image": "images/cookie6.png",
+    "category": "nuts"
+  },
+  {
+    "id": 7,
+    "name": "Полуничне печиво",
+    "price": 45,
+    "description": "Легкий полуничний смак з ніжною текстурою",
+    "image": "images/cooki7.png",
+    "category": "fruit"
+  },
+  {
+    "id": 8,
+    "name": "Лимонне печиво",
+    "price": 45,
+    "description": "Освіжаючий цитрусовий смак",
+    "image": "images/cookie8.png",
+    "category"  : "fruit"
+  },
+  {
+    "id": 9,
+    "name": "Печиво з шоколадними краплями",
+    "price": 50,
+    "description": "Класика з великими шматочками шоколаду",
+    "image": "images/cooki9.png",
+    "category": "classic"
+  },
+  {
+    "id": 10,
+    "name": "Кокосове печиво",
+    "price": 55,
+    "description": "Ароматне печиво з кокосовою стружкою",
+    "image": "images/cookie10.png",
+    "category": "coconut"
+  },
+  {
+    "id": 11,
+    "name": "Печиво Oreo-стайл",
+    "price": 60,
+    "description": "Темне печиво з кремовою начинкою",
+    "image": "images/cooki11.png",
+    "category": "chocolate"
+  },
+  {
+    "id": 12,
+    "name": "Печиво з арахісовою пастою",
+    "price": 55,
+    "description": "Насичений смак арахісу",
+    "image": "images/cookie12.png",
+    "category": "nuts"
+  },
+  {
+    "id": 13,
+    "name": "Печиво з білим шоколадом",
+    "price": 55,
+    "description": "Ніжний смак білого шоколаду",
+    "image": "images/cooki13.png",
+    "category": "chocolate"
+  },
+  {
+    "id": 14,
+    "name": "Святкове печиво",
+    "price": 65,
+    "description": "Яскраве печиво з декором для свят",
+    "image": "images/cooki14.png",
+    "category": "special"
+  },
+  {
+    "id": 15,
+    "name": "Медове печиво",
+    "price": 50,
+    "description": "Ароматне печиво з натуральним медом",
+    "image": "images/cooki15.png",
+    "category": "classic"
+  }
+]

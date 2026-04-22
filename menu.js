@@ -1,10 +1,17 @@
 const allFilter = document.getElementById("allFilter");
 const checkboxes = document.querySelectorAll(".category-filter");
 
+let products = [];
 let activeCategories = [];
 let activePrice = "all";
 
 const container = document.getElementById("products");
+
+async function getProducts() {
+        let response = await fetch("products.json")
+        let products = await response.json()
+        return products
+}
 
 function renderProducts(list) {
   container.innerHTML = "";
@@ -111,14 +118,28 @@ allFilter.addEventListener("change", () => {
   applyFilters();
 });
 
+function loadProducts() {
+  fetch("products.json")
+    .then(res => res.json())
+    .then(data => {
+      products = data;
+      applyFilters();
+    })
+    .catch(() => {
+      container.innerHTML = "<p>Не вдалося завантажити товари.</p>";
+    });
+}
+
 function addProductToCart(productId) {
   const product = products.find(p => p.id === productId);
+  if (!product) return;
 
   addToCart({
+    id: product.id,
     name: product.name,
     price: product.price,
     description: product.description
   });
 }
 
-applyFilters();
+loadProducts();

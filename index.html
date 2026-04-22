@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+    </style>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
     </style>
     <link
   rel="stylesheet"
@@ -29,17 +33,17 @@
 <section class="hero">
   <div class="hero-overlay">
     <h1 class="text1">Golden Crumbs</h1>
-    <p>
+    <p class="p">
       Тут починається твій маленький солодкий ритуал.
       Ми печемо печиво так, як це має бути — з теплом і любов’ю.
     </p>
-    <button class="btn" onclick="button()">Створіть своє печиво</button>
+    <button class="btn p" onclick="button()">Створіть своє печиво</button>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <h1>Популярні товари</h1>
+    <h1 class="p">Популярні товари</h1>
 
     <div class="swiper">
         <div class="swiper-wrapper" id="swiper-wrapper">
@@ -91,12 +95,52 @@
   </section>
 
   <div id="header-placeholder"></div>
-<script src="products.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script>
 
   // Генерираємо перші 5 товарів
-  const firstFiveProducts = products.slice(0, 5);
+  fetch("products.json")
+  .then(res => res.json())
+  .then(products => {
+
+    const firstFiveProducts = products.slice(0, 5);
+    const wrapper = document.getElementById('swiper-wrapper');
+
+    firstFiveProducts.forEach(product => {
+      const card = document.createElement('div');
+      card.className = 'card swiper-slide';
+
+      card.innerHTML = `
+        <img class="card-image" src="${product.image}" alt="${product.name}">
+        <div class="card-body">
+          <h3>${product.name}</h3>
+          <span class="card-price">${product.price} ₴</span><br>
+          <button class="card-btn">Додати в кошик</button>
+        </div>
+      `;
+
+      wrapper.appendChild(card);
+    });
+
+    // Ініціалізація swiper ПІСЛЯ завантаження
+    new Swiper('.swiper', { 
+      loop: true,
+      slidesPerView: 3,
+      spaceBetween: 20,
+      autoplay: { delay: 3000 },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        320: { slidesPerView:1 },
+        700: { slidesPerView:2 },
+        1000:{ slidesPerView:3 }
+      }
+    });
+
+  });
   const wrapper = document.getElementById('swiper-wrapper');
 
   firstFiveProducts.forEach(product => {

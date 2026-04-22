@@ -12,16 +12,16 @@ function saveCart(cart) {
 function addToCart(item) {
   let cart = getCart();
 
+  const itemId = item.id || Date.now();
+
   // шукаємо чи вже є такий товар
-  const existing = cart.find(p =>
-    p.name === item.name && p.description === item.description
-  );
+  const existing = cart.find(p => p.id === itemId);
 
   if (existing) {
     existing.quantity += 1;
   } else {
     cart.push({
-      id: Date.now(),
+      id: itemId,
       name: item.name,
       price: item.price,
       description: item.description,
