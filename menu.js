@@ -18,16 +18,24 @@ function renderProducts(list) {
 
   list.forEach(product => {
     const card = document.createElement("div");
+    card.classList.add("product-card");
 
-    card.innerHTML = `
-      <img src="${product.image}" width="150">
-      <h3>${product.name}</h3>
-      <p>${product.price} грн</p>
-      <button onclick="openProduct(${product.id})">Детальніше</button>
-      <button onclick="addProductToCart(${product.id})">
-  В кошик 🧺
-</button>
-    `;
+card.innerHTML = `
+  <img class="card-image" src="${product.image}" alt="${product.name}">
+
+  <div class="card-body">
+    <div class="card-top">
+      <h3 class="card-title">${product.name}</h3>
+      <p class="card-description">${product.description || ""}</p>
+    </div>
+
+    <div class="card-bottom">
+      <span class="card-price">${product.price} ₴</span>
+    </div>
+  </div>
+
+  <button class="card-btn"><i class="ti ti-shopping-cart"></i></button>
+`;
 
     container.appendChild(card);
   });
@@ -142,4 +150,8 @@ function addProductToCart(productId) {
   });
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+
 loadProducts();
+
+});
