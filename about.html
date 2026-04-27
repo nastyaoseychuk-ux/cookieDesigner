@@ -4,7 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+    </style>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+    </style>
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+/>
 </head>
 <body>
     <div id="header-placeholder"></div>
@@ -17,11 +30,102 @@
         </script>
     </div>
 
+<section class="about-section container">
+    <div class="about-card text-center">
+        <h1 class="about-title">Про нас</h1>
 
+        <p class="about-text mb-4">
+            Ми — <strong>Cookie Designer</strong>, місце, де створюються не просто печива, а справжні маленькі радості.
+            Наша історія почалася з простої ідеї — зробити десерти, які дарують тепло, затишок і щиру усмішку.
+        </p>
 
+        <p class="about-text mb-5">
+            Кожне печиво ми випікаємо з любов’ю, використовуючи тільки якісні інгредієнти.
+            А головне — ти можеш створити власне унікальне печиво в нашому конструкторі.
+        </p>
 
+        <button class="btn-universal p" onclick="buttonMenu()">Переглянути меню</button>
+    </div>
+</section>
 
-    <div id="header-placeholder"></div>
+<!-- FEATURES -->
+ <section class="features container5">
+
+  <div class="features-grid features-grid1">
+    <div class="feature-card">
+      <div class="icon"><i class="ti ti-cookie feature-icon"></i></div>
+        <h5>Свіжа випічка</h5>
+        <p>Ми готуємо печиво щодня, щоб ти отримував максимум смаку.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon"><i class="ti ti-heart feature-icon"></i></div>
+        <h5>З любов’ю</h5>
+        <p>Кожен рецепт створений з турботою про твоє задоволення.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon"><i class="ti ti-settings feature-icon"></i></div>
+         <h5>Свій дизайн</h5>
+        <p>Створи власне печиво — обери смак, начинку та стиль.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="team-section container5 features-grid1">
+    <h2 class="team-title">Наша команда</h2>
+
+    <div class="row g-4 ">
+
+        <!-- Менеджер -->
+        <div class="col-md-4">
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6" class="team-img">
+                <div class="team-name">Олена Коваль</div>
+                <div class="team-role">Менеджер</div>
+                <div class="team-desc">
+                    Відповідає за сервіс і робить усе, щоб кожен клієнт був задоволений.
+                </div>
+            </div>
+        </div>
+
+        <!-- Кухар -->
+        <div class="col-md-4">
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1607631568010-a87245c0daf8" class="team-img">
+                <div class="team-name">Іван Петренко</div>
+                <div class="team-role">Шеф-кондитер</div>
+                <div class="team-desc">
+                    Створює наші фірмові рецепти та експериментує з новими смаками.
+                </div>
+            </div>
+        </div>
+
+        <!-- Дизайнер -->
+        <div class="col-md-4">
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12" class="team-img">
+                <div class="team-name">Марія Бондар</div>
+                <div class="team-role">Дизайнер</div>
+                <div class="team-desc">
+                    Робить кожне печиво не тільки смачним, а й красивим.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div id="footer-placeholder"></div>
+  <script>
+  fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
+    });
+</script>
 
 <script>
 fetch("header.html")
@@ -29,6 +133,10 @@ fetch("header.html")
   .then(data => {
     document.getElementById("header-placeholder").innerHTML = data;
   });
+
+  function buttonMenu() {
+    window.location.href = "menu.html";
+  }
 </script>
 </body>
 </html>

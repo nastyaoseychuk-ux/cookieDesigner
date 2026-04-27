@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -20,7 +20,7 @@
 />
 </head>
 <body>
-  <div id="header-placeholder"></div>
+    <div id="header-placeholder"></div>
         <script>
             fetch("header.html")
             .then(res => res.text())
@@ -30,50 +30,11 @@
         </script>
     </div>
 
- <div id="header-placeholder"></div>
 
-  <h1>Створи своє печиво 🍪</h1>
 
-  <div class="preview">
-  <img id="base" class="layer" src="">
-  <img id="icing" class="layer" src="">
-  <img id="topping" class="layer" src="">
-</div>
-  <div class="container">
+    <div id="header-placeholder"></div>
 
-    <div class="step">
-      <h2>1. Обери форму</h2>
-      <div class="options" id="shapes"></div>
-    </div>
-
-    <div class="step">
-  <h2>2. Обери тісто</h2>
-  <div class="options" id="doughs"></div>
-</div>
-
-    <div class="step">
-      <h2>3. Обери начинку</h2>
-      <div class="options" id="flavors"></div>
-    </div>
-
-    <div class="step">
-      <h2>4. Обери глазур</h2>
-      <div class="options" id="icings"></div>
-    </div>
-
-    <div id="summary" class="summary">
-      <h2>Твій вибір:</h2>
-      <p id="summaryText">Нічого не вибрано</p>
-      <p id="totalPrice">0 грн</p>
-    </div>
-
-  </div>
-
- <button class="btn-universal" onclick="addCustomToCart()">Додайте в кошик</button>
-
-  <div id="header-placeholder"></div>
-
-  <div id="footer-placeholder"></div>
+    <div id="footer-placeholder"></div>
   <script>
   fetch('footer.html')
     .then(response => response.text())
@@ -89,9 +50,5 @@ fetch("header.html")
     document.getElementById("header-placeholder").innerHTML = data;
   });
 </script>
-
-  <script src="script.js"></script>
-  <script src="cart.js"></script>
-
 </body>
 </html>

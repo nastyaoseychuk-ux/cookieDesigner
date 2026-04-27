@@ -17,20 +17,23 @@ function renderCart() {
 
   cart.forEach(item => {
     const div = document.createElement("div");
+    div.className = "card";
 
     div.innerHTML = `
-      <h3>${item.name}</h3>
-      <p>${item.description}</p>
+      <div class="card-body">
+        <h3>${item.name}</h3>
+        <p class="p">${item.description}</p>
 
-      <div>
-        <button onclick="decrease(${item.id})">-</button>
-        <span>${item.quantity}</span>
-        <button onclick="increase(${item.id})">+</button>
+        <div class="quantity-controls">
+          <button class="button" onclick="decrease(${item.id})">-</button>
+          <span>${item.quantity}</span>
+          <button class="button" onclick="increase(${item.id})">+</button>
+        </div>
+
+        <p class="card-price">${item.price} × ${item.quantity} = ${item.price * item.quantity} грн</p>
+
+        <button class="card-btn" onclick="removeItem(${item.id})">Видалити</button>
       </div>
-
-      <p>${item.price} × ${item.quantity} = ${item.price * item.quantity} грн</p>
-
-      <button onclick="removeItem(${item.id})">Видалити</button>
     `;
 
     container.appendChild(div);

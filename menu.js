@@ -1,26 +1,41 @@
 const allFilter = document.getElementById("allFilter");
 const checkboxes = document.querySelectorAll(".category-filter");
 
+let products = [];
 let activeCategories = [];
 let activePrice = "all";
 
 const container = document.getElementById("products");
+
+async function getProducts() {
+        let response = await fetch("products.json")
+        let products = await response.json()
+        return products
+}
 
 function renderProducts(list) {
   container.innerHTML = "";
 
   list.forEach(product => {
     const card = document.createElement("div");
+   card.className = "card";
 
-    card.innerHTML = `
-      <img src="${product.image}" width="150">
-      <h3>${product.name}</h3>
-      <p>${product.price} грн</p>
-      <button onclick="openProduct(${product.id})">Детальніше</button>
-      <button onclick="addProductToCart(${product.id})">
-  В кошик 🧺
-</button>
-    `;
+card.innerHTML = `
+  <img class="card-image" src="${product.image}" alt="${product.name}">
+
+  <div class="card-body">
+    <div class="card-top">
+      <h3 class="card-title">${product.name}</h3>
+      <p class="card-description">${product.description || ""}</p>
+    </div>
+
+    <div class="card-bottom">
+      <span class="card-price">${product.price} ₴</span>
+    </div>
+  </div>
+
+  <button class="card-btn"><i class="ti ti-shopping-cart"></i></button>
+`;
 
     container.appendChild(card);
   });
@@ -111,14 +126,44 @@ allFilter.addEventListener("change", () => {
   applyFilters();
 });
 
+function loadProducts() {
+  fetch("products.json")
+    .then(res => res.json())
+    .then(data => {
+      products = data;
+      applyFilters();
+    })
+    .catch(() => {
+      container.innerHTML = "<p>Не вдалося завантажити товари.</p>";
+    });
+}
+
 function addProductToCart(productId) {
   const product = products.find(p => p.id === productId);
+  if (!product) return;
 
   addToCart({
+    id: product.id,
     name: product.name,
     price: product.price,
     description: product.description
   });
 }
 
-applyFilters();
+function updatePreview() {
+  const base = document.getElementById("base");
+  const icing = document.getElementById("icing");
+  const topping = document.getElementById("topping");
+
+  const shape = shapes.find(s => s.id === selected.shape);
+  const icingItem = icings.find(i => i.id === selected.icing);
+
+  if (shape) base.src = shape.image;
+  if (icingItem) icing.src = icingItem.image;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+loadProducts();
+
+});
