@@ -18,7 +18,7 @@ function renderProducts(list) {
 
   list.forEach(product => {
     const card = document.createElement("div");
-    card.classList.add("product-card");
+   card.className = "card";
 
 card.innerHTML = `
   <img class="card-image" src="${product.image}" alt="${product.name}">
@@ -148,6 +148,18 @@ function addProductToCart(productId) {
     price: product.price,
     description: product.description
   });
+}
+
+function updatePreview() {
+  const base = document.getElementById("base");
+  const icing = document.getElementById("icing");
+  const topping = document.getElementById("topping");
+
+  const shape = shapes.find(s => s.id === selected.shape);
+  const icingItem = icings.find(i => i.id === selected.icing);
+
+  if (shape) base.src = shape.image;
+  if (icingItem) icing.src = icingItem.image;
 }
 
 document.addEventListener('DOMContentLoaded', () => {

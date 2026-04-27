@@ -28,7 +28,7 @@
     "name": "Подвійне шоколадне",
     "price": 60,
     "description": "Максимум шоколаду для справжніх фанатів",
-    "image": "images/cookie4.png",
+    "image": "images/cooki4.png",
     "category": "chocolate"
   },
   {
@@ -44,7 +44,7 @@
     "name": "Печиво з горіхами",
     "price": 55,
     "description": "Хрустке печиво з обсмаженими горіхами",
-    "image": "images/cookie6.png",
+    "image": "images/cooki6.png",
     "category": "nuts"
   },
   {
@@ -60,7 +60,7 @@
     "name": "Лимонне печиво",
     "price": 45,
     "description": "Освіжаючий цитрусовий смак",
-    "image": "images/cookie8.png",
+    "image": "images/cooki8.png",
     "category"  : "fruit"
   },
   {

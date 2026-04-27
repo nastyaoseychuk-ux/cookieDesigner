@@ -34,6 +34,11 @@
 
   <h1>Створи своє печиво 🍪</h1>
 
+  <div class="preview">
+  <img id="base" class="layer" src="">
+  <img id="icing" class="layer" src="">
+  <img id="topping" class="layer" src="">
+</div>
   <div class="container">
 
     <div class="step">
@@ -42,12 +47,17 @@
     </div>
 
     <div class="step">
-      <h2>2. Обери начинку</h2>
+  <h2>2. Обери тісто</h2>
+  <div class="options" id="doughs"></div>
+</div>
+
+    <div class="step">
+      <h2>3. Обери начинку</h2>
       <div class="options" id="flavors"></div>
     </div>
 
     <div class="step">
-      <h2>3. Обери глазур</h2>
+      <h2>4. Обери глазур</h2>
       <div class="options" id="icings"></div>
     </div>
 
@@ -59,9 +69,18 @@
 
   </div>
 
-  <button onclick="addCustomToCart()">Додати в кошик</button>
+ <button class="btn-universal" onclick="addCustomToCart()">Додайте в кошик</button>
 
   <div id="header-placeholder"></div>
+
+  <div id="footer-placeholder"></div>
+  <script>
+  fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
+    });
+</script>
 
 <script>
 fetch("header.html")
