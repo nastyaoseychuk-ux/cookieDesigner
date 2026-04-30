@@ -30,48 +30,70 @@
         </script>
     </div>
 
- <div id="header-placeholder"></div>
+<main class="designer-section">
+    <div class="designer-container">
+        <aside class="designer-preview">
+            <div class="preview-sticky-card">
+                <div class="badge">Твій вибір</div>
+                
+                <div class="cookie-display-frame">
+                    <img id="base" src="images/constructor/placeholder.png" alt="Cookie Preview">
+                </div>
 
-  <h1>Створи своє печиво 🍪</h1>
+                <div class="selection-summary">
+                    <div class="summary-info">
+                        <h3>Конфігурація:</h3>
+                        <p id="summaryText">Почніть обирати інгредієнти...</p>
+                    </div>
+                    
+                    <div class="price-action">
+                        <div class="price-tag">
+                            <span>Сума:</span>
+                            <strong id="totalPrice">0 грн</strong>
+                        </div>
+                        <button id="addToCartBtn" class="add-to-cart-big" onclick="addCustomToCart()" disabled>
+                            <i class="ti ti-shopping-cart"></i> Додати у кошик
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
 
-  <div class="preview">
-  <img id="base" class="layer" src="">
-  <img id="icing" class="layer" src="">
-  <img id="topping" class="layer" src="">
-</div>
-  <div class="container">
+        <section class="designer-options">
+            <div class="option-group">
+                <div class="group-header">
+                    <span class="group-step">01</span>
+                    <h2>Форма печива</h2>
+                </div>
+                <div class="options-grid" id="shapes"></div>
+            </div>
 
-    <div class="step">
-      <h2>1. Обери форму</h2>
-      <div class="options" id="shapes"></div>
+            <div class="option-group">
+                <div class="group-header">
+                    <span class="group-step">02</span>
+                    <h2>Основа (Тісто)</h2>
+                </div>
+                <div class="options-grid" id="doughs"></div>
+            </div>
+
+            <div class="option-group">
+                <div class="group-header">
+                    <span class="group-step">03</span>
+                    <h2>Колір глазурі</h2>
+                </div>
+                <div class="options-grid" id="icings"></div>
+            </div>
+
+            <div class="option-group">
+                <div class="group-header">
+                    <span class="group-step">04</span>
+                    <h2>Декор (Посипка)</h2>
+                </div>
+                <div class="options-grid" id="toppings"></div>
+            </div>
+        </section>
     </div>
-
-    <div class="step">
-  <h2>2. Обери тісто</h2>
-  <div class="options" id="doughs"></div>
-</div>
-
-    <div class="step">
-      <h2>3. Обери начинку</h2>
-      <div class="options" id="flavors"></div>
-    </div>
-
-    <div class="step">
-      <h2>4. Обери глазур</h2>
-      <div class="options" id="icings"></div>
-    </div>
-
-    <div id="summary" class="summary">
-      <h2>Твій вибір:</h2>
-      <p id="summaryText">Нічого не вибрано</p>
-      <p id="totalPrice">0 грн</p>
-    </div>
-
-  </div>
-
- <button class="btn-universal" onclick="addCustomToCart()">Додайте в кошик</button>
-
-  <div id="header-placeholder"></div>
+</main>
 
   <div id="footer-placeholder"></div>
   <script>

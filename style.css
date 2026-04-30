@@ -1510,3 +1510,292 @@ section ol li {
         justify-content: center;
       }
     }
+
+    /* ==========================================================================
+   КОНСТРУКТОР ПЕЧИВА (DESIGNER PAGE)
+   ========================================================================== */
+
+/* 1. Основний макет */
+.designer-section {
+    padding: 60px 20px;
+    background-color: var(--background);
+    min-height: 100vh;
+}
+
+.designer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 420px 1fr; /* Ліва колонка фіксована, права тягнеться */
+    gap: 50px;
+    align-items: start;
+}
+
+/* 2. Ліва панель (Результат) */
+.designer-preview {
+    position: sticky;
+    top: 100px; /* Відступ від верху при скролі */
+    z-index: 10;
+}
+
+.preview-sticky-card {
+    background: #ffffff;
+    border-radius: 40px;
+    padding: 35px;
+    box-shadow: 0 20px 50px rgba(62, 39, 35, 0.08);
+    border: 1px solid rgba(139, 94, 60, 0.12);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Рамка для фото (Slot) */
+.cookie-display-frame {
+    background: #fdfaf7;
+    border: 2px dashed rgba(139, 94, 60, 0.25);
+    border-radius: 30px;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.cookie-display-frame img {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.12));
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cookie-display-frame img[src*="placeholder.png"] {
+    opacity: 0.2;
+    filter: grayscale(1);
+}
+
+/* Написи та ціна */
+.badge {
+    display: inline-block;
+    align-self: center;
+    padding: 6px 18px;
+    background: var(--button);
+    color: #fff;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+}
+
+.selection-summary {
+    text-align: left;
+    border-top: 1px solid #f2efed;
+    padding-top: 20px;
+}
+
+.summary-info h3 {
+    font-family: 'Sofia Sans', sans-serif;
+    font-size: 1.1rem;
+    color: var(--text1);
+    margin-bottom: 10px;
+}
+
+#summaryText {
+    font-size: 0.95rem;
+    color: var(--text3);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    min-height: 60px;
+}
+
+.price-tag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.price-tag span {
+    font-size: 1.1rem;
+    color: var(--text2);
+    font-weight: 500;
+}
+
+.price-tag strong {
+    font-size: 1.8rem;
+    color: var(--button);
+    font-weight: 800;
+}
+
+/* Кнопка "Додати" */
+.add-to-cart-big {
+    width: 100%;
+    padding: 18px;
+    background: var(--button);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.add-to-cart-big:hover:not(:disabled) {
+    background: var(--button-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(139, 94, 60, 0.2);
+}
+
+.add-to-cart-big:disabled {
+    background: #dcd7d4;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* 3. Права панель (Опції) */
+.option-group {
+    background: #ffffff;
+    border-radius: 35px;
+    padding: 35px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+}
+
+.group-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.group-step {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: rgba(139, 94, 60, 0.1);
+    font-family: 'Playfair Display', serif;
+}
+
+.group-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--text1);
+    margin: 0;
+}
+
+/* Сітка карток */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+/* Картка інгредієнта */
+.card-custom {
+    background: #fff;
+    border: 2px solid #f8f6f4;
+    border-radius: 25px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.card-custom:hover {
+    border-color: #e8e2de;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+}
+
+.card-custom.active {
+    border-color: var(--button);
+    background: #fffcf9;
+}
+
+.card-custom-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.05));
+}
+
+.card-custom-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text2);
+    margin-bottom: 6px;
+}
+
+.card-custom-price {
+    font-size: 0.85rem;
+    color: var(--button);
+    font-weight: 700;
+}
+
+/* Іконка галочки */
+.check-icon {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--button);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 4. Адаптивність (Mobile) */
+@media (max-width: 1024px) {
+    .designer-container {
+        grid-template-columns: 1fr; /* Все в одну колонку */
+    }
+
+    .designer-preview {
+        position: relative;
+        top: 0;
+        margin-bottom: 40px;
+    }
+
+    .preview-sticky-card {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .designer-section {
+        padding: 30px 15px;
+    }
+
+    .option-group {
+        padding: 25px 20px;
+    }
+
+    .options-grid {
+        grid-template-columns: repeat(2, 1fr); /* По 2 картки в ряд на малих екранах */
+        gap: 12px;
+    }
+
+    .card-custom-img {
+        width: 60px;
+        height: 60px;
+    }
+}
