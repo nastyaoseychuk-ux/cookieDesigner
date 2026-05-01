@@ -1,233 +1,16 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кошик | CoffeeDream</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Кошик</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
     <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
       @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
-      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-    </style>
-
-    <style>
-        /* Макет кошика */
-        
-
-        .cart-title {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 40px;
-            color: var(--text2);
-            margin-bottom: 40px;
-        }
-
-        .cart-layout {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-            align-items: start;
-        }
-
-        /* Список товарів */
-        .cart-items-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            gap: 20px;
-            border: 1px solid rgba(139, 94, 60, 0.05);
-        }
-
-        .cart-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(139, 94, 60, 0.12);
-        }
-
-        .cart-item-img {
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 15px;
-            background: #fff; /* Заглушка, якщо фото прозоре */
-            padding: 5px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .cart-item-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .cart-item-title {
-            font-size: 18px;
-            color: var(--text2);
-            margin: 0;
-            font-weight: 600;
-        }
-
-        .cart-item-price {
-            font-size: 16px;
-            color: var(--button);
-            font-weight: 700;
-            margin: 0;
-        }
-
-        /* Контрол кількості (+ / -) */
-        .cart-quantity {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 8px 15px;
-            border-radius: 30px;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);
-            border: 1px solid rgba(139, 94, 60, 0.1);
-        }
-
-        .cart-quantity button {
-            background: transparent;
-            border: none;
-            font-size: 18px;
-            color: var(--text2);
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-        }
-
-        .cart-quantity button:hover {
-            color: var(--button);
-            transform: scale(1.2);
-        }
-
-        .cart-quantity span {
-            font-weight: 600;
-            color: var(--text2);
-            font-size: 16px;
-            min-width: 20px;
-            text-align: center;
-        }
-
-        /* Кнопка видалення */
-        .cart-remove-btn {
-            background: rgba(255, 240, 240, 0.8);
-            color: #d9534f;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
-
-        .cart-remove-btn:hover {
-            background: #d9534f;
-            color: white;
-            transform: rotate(10deg) scale(1.1);
-            box-shadow: 0 8px 15px rgba(217, 83, 79, 0.2);
-        }
-
-        /* Блок підсумку (Summary) */
-        .cart-summary {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            position: sticky;
-            top: 100px;
-            border: 1px solid rgba(139, 94, 60, 0.1);
-        }
-
-        .cart-summary h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            color: var(--text2);
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(139, 94, 60, 0.2);
-            padding-bottom: 15px;
-        }
-
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            color: var(--text3);
-            font-size: 16px;
-        }
-
-        .summary-total {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(139, 94, 60, 0.2);
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--button);
-        }
-
-        .btn-checkout {
-            width: 100%;
-            margin-top: 25px;
-            font-size: 18px;
-            font-weight: 600;
-            padding: 15px;
-        }
-
-        /* Адаптивність */
-        @media (max-width: 900px) {
-            .cart-layout {
-                grid-template-columns: 1fr;
-            }
-            .cart-summary {
-                position: relative;
-                top: 0;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .cart-item {
-                flex-direction: column;
-                text-align: center;
-                position: relative;
-                padding-top: 40px;
-            }
-            .cart-remove-btn {
-                position: absolute;
-                top: 15px;
-                right: 15px;
-                width: 35px;
-                height: 35px;
-                font-size: 16px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -241,17 +24,12 @@
     </script>
     <div id="header-placeholder"></div>
 
-    <div class="cart-container">
-        <h1 class="cart-title">Ваш кошик 🧺</h1>
-
+    <div class="cart-container container7">
         <div class="cart-layout">
-            
-            <div id="cartItems" class="cart-items-wrapper">
-                </div>
+            <div id="cartItems" class="cart-items-wrapper"></div>
 
             <div class="cart-summary">
                 <h3>Замовлення</h3>
-                
                 <div class="summary-row">
                     <span>Товари:</span>
                     <span id="itemsCount">0 шт.</span>
@@ -260,51 +38,73 @@
                     <span>Знижка:</span>
                     <span>0 грн</span>
                 </div>
-                
                 <div class="summary-total">
                     <span>Разом:</span>
                     <span id="totalPrice">0 грн</span>
                 </div>
-
                 <button class="btn-custom btn-checkout">Оформити замовлення</button>
             </div>
-
         </div>
     </div>
 
-    <script src="cart.js"></script>
-
+    <!-- Модальне вікно -->
     <div class="modal fade" id="orderModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content" style="background: var(--background); border-radius: 25px; border: none; box-shadow: var(--shadow);">
-      <div class="modal-header" style="border-bottom: 1px solid rgba(139, 94, 60, 0.1);">
-        <h5 class="modal-title" style="font-family: 'Playfair Display', serif; color: var(--text2); font-weight: 700;">Оформлення замовлення</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" style="padding: 30px;">
-        <form id="orderForm">
-          <div class="mb-3">
-            <label class="form-label" style="color: var(--text2); font-weight: 500;">Ваше ім'я</label>
-            <input type="text" class="form-control" id="userName" required style="border-radius: 10px; border: 1px solid rgba(139, 94, 60, 0.2);">
-          </div>
-          <div class="mb-3">
-            <label class="form-label" style="color: var(--text2); font-weight: 500;">Прізвище</label>
-            <input type="text" class="form-control" id="userSurname" required style="border-radius: 10px; border: 1px solid rgba(139, 94, 60, 0.2);">
-          </div>
-          <div class="mb-3">
-            <label class="form-label" style="color: var(--text2); font-weight: 500;">Номер телефону</label>
-            <input type="tel" class="form-control" id="userPhone" placeholder="+380" required style="border-radius: 10px; border: 1px solid rgba(139, 94, 60, 0.2);">
-          </div>
-          <div class="mb-3">
-            <label class="form-label" style="color: var(--text2); font-weight: 500;">Адреса доставки</label>
-            <textarea class="form-control" id="userAddress" rows="2" required style="border-radius: 10px; border: 1px solid rgba(139, 94, 60, 0.2);"></textarea>
-          </div>
-          <button type="submit" class="btn-custom w-100" style="margin-top: 10px; padding: 12px;">Підтвердити замовлення</button>
-        </form>
-      </div>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background: var(--background); border-radius: 25px; border: none; box-shadow: var(--shadow);">
+                <div class="modal-header" style="border-bottom: 1px solid rgba(139, 94, 60, 0.1);">
+                    <h5 class="modal-title" style="font-family: 'Playfair Display', serif; color: var(--text2); font-weight: 700;">Оформлення замовлення</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="padding: 30px;">
+                    <form id="orderForm">
+                        <div class="mb-3">
+                            <label class="form-label" style="color: var(--text2); font-weight: 500;">Ваше ім'я</label>
+                            <input type="text" class="form-control" id="userName" required style="border-radius: 10px; border: 1px solid rgba(139, 94, 60, 0.2);">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" style="color: var(--text2); font-weight: 500;">Прізвище</label>
+                            <input type="text" class="form-control" id="userSurname" required style="border-radius: 10px; border: 1px solid rgba(139, 94, 60, 0.2);">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" style="color: var(--text2); font-weight: 500;">Номер телефону</label>
+                            <input type="tel" class="form-control" id="userPhone" placeholder="+380" required style="border-radius: 10px; border: 1px solid rgba(139, 94, 60, 0.2);">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" style="color: var(--text2); font-weight: 500;">Адреса доставки</label>
+                            <textarea class="form-control" id="userAddress" rows="2" required style="border-radius: 10px; border: 1px solid rgba(139, 94, 60, 0.2);"></textarea>
+                        </div>
+                        <button type="submit" class="btn-custom w-100" style="margin-top: 10px; padding: 12px;">Підтвердити замовлення</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const reveals = document.querySelectorAll(".reveal");
+
+    const revealOptions = {
+        threshold: 0.1, // Ефект спрацює, коли на екрані з'явиться 10% об'єкта
+        rootMargin: "0px 0px -50px 0px" // Анімація почнеться трохи вище нижнього краю екрана
+    };
+
+    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target); // Відмикаємо після появи, щоб не анімувалося туди-сюди
+            }
+        });
+    }, revealOptions);
+
+    reveals.forEach(reveal => {
+        revealOnScroll.observe(reveal);
+    });
+});
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="cart.js"></script>
 </body>
 </html>

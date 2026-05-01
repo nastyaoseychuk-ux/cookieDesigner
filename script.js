@@ -48,19 +48,46 @@ function updatePreview() {
     const previewImg = document.getElementById("base");
     if (!previewImg) return;
 
-    // Картинка оновиться, тільки якщо вибрано ФОРМУ та ТІСТО
-    if (selected.shape && selected.dough) {
-        const icingId = selected.icing || "none";
-        const toppingId = selected.topping || "none";
-        
-        // Файли мають назву: round-classic-white-none.png
-        const fileName = `${selected.shape}-${selected.dough}-${icingId}-${toppingId}.png`;
-        
-        previewImg.src = `images/constructor/${fileName}`;
+    if (selected.shape) {
+        // 1. Починаємо формувати назву з базової форми (наприклад, "heart" або "square")
+        let fileName = selected.shape; 
+
+        // 2. Якщо вибрано шоколадне тісто, додаємо "-choco" 
+        // (класичне не додаємо, бо бачу, що базовий файл це просто форма)
+        if (selected.dough === "choco") {
+            fileName += "-choco";
+        }
+
+        // 3. Якщо вибрана глазур (і це не "none"), додаємо її колір
+        if (selected.icing && selected.icing !== "none") {
+            fileName += "-" + selected.icing;
+        }
+
+        // 4. Якщо вибрана посипка (і це не "none")
+        if (selected.topping && selected.topping !== "none") {
+            fileName += "-" + selected.topping;
+        }
+
+        // Додаємо розширення
+        fileName += ".png";
+
+        // 5. Встановлюємо шлях до твоєї реальної папки
+        previewImg.src = `images/shapes/${fileName}`;
         previewImg.style.opacity = "1";
         previewImg.style.filter = "none";
+        
+        // СУПЕР-ФІШКА: Якщо ти ще не встигла намалювати якусь комбінацію 
+        // (наприклад, heart-choco-white.png), браузер замість помилки покаже просто базову форму!
+        previewImg.onerror = function() {
+            console.warn(`Зображення ${fileName} ще не створено. Показую базову форму.`);
+            this.src = `images/shapes/${selected.shape}.png`;
+            // Щоб уникнути нескінченного циклу, якщо навіть базової форми немає:
+            this.onerror = null; 
+        };
+
     } else {
-        previewImg.src = "images/constructor/placeholder.png";
+        // Якщо нічого не вибрано
+        previewImg.src = "images/shapes/round.png"; // Можеш поставити сюди будь-який плейсхолдер
         previewImg.style.opacity = "0.3";
         previewImg.style.filter = "grayscale(1)";
     }
@@ -86,7 +113,6 @@ function renderGroup(items, containerId, type) {
         
         card.innerHTML = `
             ${isActive ? '<i class="ti ti-check check-icon"></i>' : ''}
-            <img class="card-custom-img" src="${item.image}" alt="${item.name}">
             <div class="card-custom-body">
                 <span class="card-custom-title">${item.name}</span>
                 <p class="card-custom-price">${item.price === 0 ? 'Безкоштовно' : '+ ' + item.price + ' грн'}</p>

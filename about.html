@@ -30,7 +30,7 @@
         </script>
     </div>
 
-<section class="about-section container">
+<section class="about-section container reveal">
     <div class="about-card text-center">
         <h1 class="about-title">Про нас</h1>
 
@@ -49,7 +49,7 @@
 </section>
 
 <!-- FEATURES -->
- <section class="features container5">
+ <section class="features container5 reveal">
 
   <div class="features-grid features-grid1">
     <div class="feature-card">
@@ -74,7 +74,7 @@
 
 </section>
 
-<section class="team-section container5 features-grid1">
+<section class="team-section container5 features-grid1 reveal">
     <h2 class="team-title">Наша команда</h2>
 
     <div class="row g-4 ">
@@ -137,6 +137,28 @@ fetch("header.html")
   function buttonMenu() {
     window.location.href = "menu.html";
   }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const reveals = document.querySelectorAll(".reveal");
+
+    const revealOptions = {
+        threshold: 0.1, // Ефект спрацює, коли на екрані з'явиться 10% об'єкта
+        rootMargin: "0px 0px -50px 0px" // Анімація почнеться трохи вище нижнього краю екрана
+    };
+
+    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target); // Відмикаємо після появи, щоб не анімувалося туди-сюди
+            }
+        });
+    }, revealOptions);
+
+    reveals.forEach(reveal => {
+        revealOnScroll.observe(reveal);
+    });
+});
 </script>
 </body>
 </html>
