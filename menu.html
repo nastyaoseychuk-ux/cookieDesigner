@@ -78,6 +78,12 @@
 </div>
 
 <div id="footer-placeholder"></div>
+
+<!-- Плаваюча кнопка кошика для мобільних -->
+<a href="cart.html" class="floating-cart" id="mobileCartBtn">
+  <i class="ti ti-shopping-cart"></i>
+</a>
+
   <script>
   fetch('footer.html')
     .then(response => response.text())
@@ -112,8 +118,11 @@
         revealOnScroll.observe(reveal);
     });
 });
+
+
 </script>
 
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="cart.js"></script>
 <script src="menu.js"></script>
 </body>

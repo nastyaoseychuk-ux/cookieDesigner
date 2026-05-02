@@ -286,6 +286,17 @@ body {
   text-shadow: 0 2px 8px rgba(139, 94, 60, 0.3);
 }
 
+/* Responsive navbar */
+@media (max-width: 768px) {
+  .navbar {
+    width: 100%;
+    left: 0;
+    transform: none;
+    padding: 5px 10px;
+    border-radius: 0;
+  }
+}
+
 .nav-links {
   display: flex;
   gap: 40px;
@@ -438,6 +449,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  color: var(--text2);
 }
 
 h1 {
@@ -854,6 +866,7 @@ section ol li {
   font-size: 40px;
   margin-bottom: 15px;
   transition: 0.3s;
+  color: var(--accent-brown);
 }
 
 .feature-card:hover .icon {
@@ -1138,7 +1151,6 @@ section ol li {
         }
 
         .about-title {
-            font-family: 'Playfair Display', serif;
             font-size: 48px;
             margin-bottom: 20px;
         }
@@ -1186,8 +1198,6 @@ section ol li {
 }
 
 .team-title {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
     font-size: 40px;
     margin-bottom: 40px;
 }
@@ -1377,13 +1387,54 @@ section ol li {
     }
 
     .footer-content {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 50px;
-    }
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+@media (max-width: 900px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-brand,
+  .footer-links,
+  .footer-contacts {
+    align-items: center;
+  }
+
+  .footer-links ul {
+    padding: 0;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .footer-desc {
+    margin: 0 auto;
+  }
+}
+
+.footer-content > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
 
     /* Логотип та опис */
     .footer-brand {
@@ -1403,6 +1454,8 @@ section ol li {
       font-size: 0.95rem;
       line-height: 1.6;
       color: rgba(62, 39, 35, 0.8);
+
+      max-width: 300px;
     }
 
     /* Заголовки колонок */
@@ -2193,3 +2246,167 @@ section ol li {
                 font-size: 60px;
             }
         }
+
+
+/* Планшети та невеликі ноутбуки (ширина екрана до 900px) */
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column; /* Ставимо сайдбар над контентом */
+    padding: 10px;
+    gap: 15px;
+    margin-top: 100px;
+  }
+
+  .sidebar {
+    width: 100%; /* Сайдбар займає всю ширину */
+    max-width: 100%;
+    position: static; /* Відключаємо залипання, щоб не перекривати екран при скролі */
+    max-height: none;
+    overflow-y: visible;
+    
+    /* Робимо фільтри горизонтальними */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  /* Заголовки у фільтрах на всю ширину */
+  .sidebar h3 {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  /* Чекбокси вишиковуємо в ряд */
+  .sidebar label {
+    flex: 1 1 auto;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  /* Випадний список (Select) на всю ширину */
+  #priceFilter {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  /* Центруємо картки товарів, щоб вони не притискалися до лівого краю */
+  #products {
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+/* Смартфони (ширина екрана до 600px) */
+@media (max-width: 600px) {
+  .layout {
+    padding: 5px;
+  }
+
+  .sidebar {
+    border-radius: 15px;
+    padding: 15px 10px;
+  }
+
+  .sidebar label {
+    /* На дуже малих екранах краще, щоб кнопки фільтрів були трохи меншими */
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  #products > div {
+    /* Робимо так, щоб картка товару підлаштовувалась під ширину екрана */
+    width: 100%; 
+    max-width: 320px; /* Але не ставала надто величезною */
+  }
+
+  .product-card {
+    height: auto; /* Дозволяємо картці розтягуватись по висоті, якщо текст довгий */
+    min-height: 380px;
+  }
+}
+
+
+
+.floating-cart {
+    display: none; /* За замовчуванням ховаємо на ПК */
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    width: 65px;
+    height: 65px;
+    background: var(--button); /* Використовуємо твій фірмовий колір */
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 65px;
+    font-size: 32px; /* Розмір іконки */
+    box-shadow: 0 10px 25px rgba(139, 94, 60, 0.4);
+    z-index: 9999; /* Щоб завжди була поверх усього */
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ефект при натисканні/наведенні */
+.floating-cart:hover,
+.floating-cart:active {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(139, 94, 60, 0.6);
+    color: white;
+}
+
+
+
+/* Вмикаємо кнопку ТІЛЬКИ на мобільних телефонах та планшетах */
+@media (max-width: 900px) {
+    .floating-cart {
+        display: block;
+        animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+}
+
+/* Анімація м'якої появи при завантаженні сторінки на телефоні */
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
+  .floating-cart {
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  .cart {
+    display: none !important;
+  }
+}
+
+/* Десктоп */
+.floating-cart {
+  display: none;
+}
+
+/* Мобілка */
+@media (max-width: 900px) {
+  .floating-cart {
+    display: block;
+  }
+}
+
+.cart .btn-circle{
+  text-decoration: none!important;
+}
