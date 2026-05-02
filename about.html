@@ -30,9 +30,9 @@
         </script>
     </div>
 
-<section class="about-section container">
+<section class="about-section container reveal">
     <div class="about-card text-center">
-        <h1 class="about-title">Про нас</h1>
+        <h1 class="about-title p">Про нас</h1>
 
         <p class="about-text mb-4">
             Ми — <strong>Cookie Designer</strong>, місце, де створюються не просто печива, а справжні маленькі радості.
@@ -49,7 +49,7 @@
 </section>
 
 <!-- FEATURES -->
- <section class="features container5">
+ <section class="features container5 reveal">
 
   <div class="features-grid features-grid1">
     <div class="feature-card">
@@ -74,8 +74,8 @@
 
 </section>
 
-<section class="team-section container5 features-grid1">
-    <h2 class="team-title">Наша команда</h2>
+<section class="team-section container5 features-grid1 reveal">
+    <h2 class="team-title p">Наша команда</h2>
 
     <div class="row g-4 ">
 
@@ -83,7 +83,7 @@
         <div class="col-md-4">
             <div class="team-card">
                 <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6" class="team-img">
-                <div class="team-name">Олена Коваль</div>
+                <div class="team-name">Олег Коваль</div>
                 <div class="team-role">Менеджер</div>
                 <div class="team-desc">
                     Відповідає за сервіс і робить усе, щоб кожен клієнт був задоволений.
@@ -107,7 +107,7 @@
         <div class="col-md-4">
             <div class="team-card">
                 <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12" class="team-img">
-                <div class="team-name">Марія Бондар</div>
+                <div class="team-name">Бодя Бондар</div>
                 <div class="team-role">Дизайнер</div>
                 <div class="team-desc">
                     Робить кожне печиво не тільки смачним, а й красивим.
@@ -119,6 +119,11 @@
 </section>
 
 <div id="footer-placeholder"></div>
+
+<!-- Плаваюча кнопка кошика для мобільних -->
+<a href="cart.html" class="floating-cart" id="mobileCartBtn">
+  <i class="ti ti-shopping-cart"></i>
+</a>
   <script>
   fetch('footer.html')
     .then(response => response.text())
@@ -137,6 +142,30 @@ fetch("header.html")
   function buttonMenu() {
     window.location.href = "menu.html";
   }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const reveals = document.querySelectorAll(".reveal");
+
+    const revealOptions = {
+        threshold: 0.1, // Ефект спрацює, коли на екрані з'явиться 10% об'єкта
+        rootMargin: "0px 0px -50px 0px" // Анімація почнеться трохи вище нижнього краю екрана
+    };
+
+    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target); // Відмикаємо після появи, щоб не анімувалося туди-сюди
+            }
+        });
+    }, revealOptions);
+
+    reveals.forEach(reveal => {
+        revealOnScroll.observe(reveal);
+    });
+});
 </script>
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

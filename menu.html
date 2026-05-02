@@ -30,10 +30,10 @@
         </script>
     </div>
 
-<div class="container3">
-<div class="layout">
+<div class="container3 reveal">
+<div class="layout reveal">
 
-  <div class="sidebar">
+  <div class="sidebar reveal">
     <h3>Категорії</h3>
     <label>
   <input type="checkbox" value="all" id="allFilter" checked>
@@ -69,7 +69,7 @@
     </select>
   </div>
 
-  <div class="content">
+  <div class="content reveal">
     <div id="products"></div>
   </div>
 
@@ -78,22 +78,51 @@
 </div>
 
 <div id="footer-placeholder"></div>
+
+<!-- Плаваюча кнопка кошика для мобільних -->
+<a href="cart.html" class="floating-cart" id="mobileCartBtn">
+  <i class="ti ti-shopping-cart"></i>
+</a>
+
   <script>
   fetch('footer.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('footer-placeholder').innerHTML = data;
     });
-</script>
 
-<script>
-fetch("header.html")
+    fetch("header.html")
   .then(res => res.text())
   .then(data => {
     document.getElementById("header-placeholder").innerHTML = data;
   });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const reveals = document.querySelectorAll(".reveal");
+
+    const revealOptions = {
+        threshold: 0.1, // Ефект спрацює, коли на екрані з'явиться 10% об'єкта
+        rootMargin: "0px 0px -50px 0px" // Анімація почнеться трохи вище нижнього краю екрана
+    };
+
+    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target); // Відмикаємо після появи, щоб не анімувалося туди-сюди
+            }
+        });
+    }, revealOptions);
+
+    reveals.forEach(reveal => {
+        revealOnScroll.observe(reveal);
+    });
+});
+
+
 </script>
 
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="cart.js"></script>
 <script src="menu.js"></script>
 </body>

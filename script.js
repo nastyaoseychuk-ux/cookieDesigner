@@ -1,209 +1,182 @@
-// ===== ДАНІ =====
-
-const shapes = [
-  { id: "round", name: "Кругле", price: 20, image: "images/shapes/round.png" },
-  { id: "heart", name: "Серце", price: 30, image: "images/shapes/heart.png" },
-  { id: "star", name: "Зірка", price: 30, image: "images/shapes/star.png" },
-  { id: "square", name: "Зірка", price: 30, image: "images/shapes/square.png" }
-];
-
-const doughTypes = [
-  { id: "classic", name: "Класичне", price: 0, image: "images/dough/classic.png" },
-  { id: "choco", name: "Шоколадне", price: 10, image: "images/dough/choco.png" }
-];
-
-const flavors = [
-  { id: "chocolate", name: "Шоколад", price: 15, image: "images/choco.png" },
-  { id: "vanilla", name: "Ваніль", price: 10, image: "images/vanilla.png" }
-];
-
-const icings = [
-  { id: "white", name: "Біла", price: 5, image: "images/icings/white.png" },
-  { id: "pink", name: "Рожева", price: 10, image: "images/icings/pink.png" }
-];
-
-
-// ===== СТАН =====
-
-let selected = {
-  shape: null,
-  dough: null,
-  flavor: null,
-  icing: null
+// ===== 1. ДАНІ (Конфігурація інгредієнтів) =====
+const ingredients = {
+    shapes: [
+        { id: "round", name: "Кругле", price: 20, image: "images/shapes/round.png" },
+        { id: "heart", name: "Серце", price: 30, image: "images/shapes/heart.png" },
+        { id: "star", name: "Зірка", price: 30, image: "images/shapes/star.png" },
+        { id: "square", name: "Квадрат", price: 25, image: "images/shapes/square.png" }
+    ],
+    doughs: [
+        { id: "classic", name: "Класичне", price: 0, image: "images/dough/classic.png" },
+        { id: "choco", name: "Шоколадне", price: 15, image: "images/dough/choco.png" }
+    ],
+    icings: [
+        { id: "none", name: "Без глазурі", price: 0, image: "images/icings/none.png" },
+        { id: "white", name: "Біла", price: 10, image: "images/icings/white.png" },
+        { id: "pink", name: "Рожева", price: 15, image: "images/icings/pink.png" }
+    ],
+    toppings: [
+        { id: "none", name: "Без посипки", price: 0, image: "images/toppings/none.png" },
+        { id: "chocolate", name: "Шоколад", price: 10, image: "images/toppings/chocolate.png" },
+        { id: "nuts", name: "Горіхи", price: 15, image: "images/toppings/nuts.png" }
+    ]
 };
 
+// ===== 2. СТАН =====
+let selected = {
+    shape: null,
+    dough: null,
+    icing: null,
+    topping: null
+};
 
-// ===== PREVIEW =====
-
-function updatePreview() {
-  console.log("SELECTED:", selected);
-
-  const base = document.getElementById("base");
-  const shape = shapes.find(s => s.id === selected.shape);
-
-  if (!shape) return;
-
-  let path = "images/shapes/" + shape.id;
-
-  if (selected.dough === "choco") {
-    path += "-choco";
-  }
-  
-  if (selected.icing === "white") {
-  path += "-white";
-}
-
-if (selected.icing === "pink") {
-  path += "-pink";
-}
-
-  console.log("IMAGE PATH:", path + ".png");
-
-  base.src = path + ".png";
-
-  base.onerror = () => {
-    console.log("FALLBACK TRIGGERED");
-    base.src = "images/shapes/" + shape.id + ".png";
-  };
-}
-
-
-// ===== РЕНДЕР =====
-
-function renderOptions(list, containerId, type) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = "";
-
-  list.forEach(item => {
-    const card = document.createElement("div");
-
-    card.classList.add("card");
-    card.dataset.id = item.id;
-
-    card.innerHTML = `
-      <img class="card-image" src="${item.image}" alt="${item.name}">
-
-      <div class="card-body">
-        <div class="card-top">
-          <h3 class="card-title">${item.name}</h3>
-          <p class="card-description">Обери цей варіант</p>
-        </div>
-
-        <div class="card-bottom">
-          <span class="card-price">${item.price} грн</span>
-        </div>
-      </div>
-    `;
-
-    card.addEventListener("click", () => {
-      selectOption(type, item.id);
-    });
-
-    container.appendChild(card);
-  });
-}
-
-
-// ===== ВИБІР =====
-
+// ===== 3. ЛОГІКА ВИБОРУ =====
 function selectOption(type, id) {
-  selected[type] = id;
-  updateUI();
+    selected[type] = id;
+    updateUI();
 }
 
-
-// ===== UI =====
-
+// ===== 4. ОНОВЛЕННЯ ІНТЕРФЕЙСУ =====
 function updateUI() {
-  document.querySelectorAll(".options").forEach(container => {
-    const type = container.id;
+    renderAllOptions(); 
+    updatePreview();    
+    updateSummary();    
+}
 
-    const cards = container.querySelectorAll(".card");
+// ===== 5. ПОПЕРЕДНІЙ ПЕРЕГЛЯД (Головне фото) =====
+function updatePreview() {
+    const previewImg = document.getElementById("base");
+    if (!previewImg) return;
 
-    cards.forEach(card => {
-      const itemId = card.dataset.id;
+    if (selected.shape) {
+        // 1. Починаємо формувати назву з базової форми (наприклад, "heart" або "square")
+        let fileName = selected.shape; 
 
-      card.classList.remove("active");
+        // 2. Якщо вибрано шоколадне тісто, додаємо "-choco" 
+        // (класичне не додаємо, бо бачу, що базовий файл це просто форма)
+        if (selected.dough === "choco") {
+            fileName += "-choco";
+        }
 
-      if (selected[type.slice(0, -1)] === itemId) {
-        card.classList.add("active");
-      }
+        // 3. Якщо вибрана глазур (і це не "none"), додаємо її колір
+        if (selected.icing && selected.icing !== "none") {
+            fileName += "-" + selected.icing;
+        }
+
+        // 4. Якщо вибрана посипка (і це не "none")
+        if (selected.topping && selected.topping !== "none") {
+            fileName += "-" + selected.topping;
+        }
+
+        // Додаємо розширення
+        fileName += ".png";
+
+        // 5. Встановлюємо шлях до твоєї реальної папки
+        previewImg.src = `images/shapes/${fileName}`;
+        previewImg.style.opacity = "1";
+        previewImg.style.filter = "none";
+        
+        // СУПЕР-ФІШКА: Якщо ти ще не встигла намалювати якусь комбінацію 
+        // (наприклад, heart-choco-white.png), браузер замість помилки покаже просто базову форму!
+        previewImg.onerror = function() {
+            console.warn(`Зображення ${fileName} ще не створено. Показую базову форму.`);
+            this.src = `images/shapes/${selected.shape}.png`;
+            // Щоб уникнути нескінченного циклу, якщо навіть базової форми немає:
+            this.onerror = null; 
+        };
+
+    } else {
+        // Якщо нічого не вибрано
+        previewImg.src = "images/shapes/round.png"; // Можеш поставити сюди будь-який плейсхолдер
+        previewImg.style.opacity = "0.3";
+        previewImg.style.filter = "grayscale(1)";
+    }
+}
+
+// ===== 6. РЕНДЕР КАРТОК =====
+function renderAllOptions() {
+    renderGroup(ingredients.shapes, "shapes", "shape");
+    renderGroup(ingredients.doughs, "doughs", "dough");
+    renderGroup(ingredients.icings, "icings", "icing");
+    renderGroup(ingredients.toppings, "toppings", "topping");
+}
+
+function renderGroup(items, containerId, type) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = "";
+
+    items.forEach(item => {
+        const card = document.createElement("div");
+        const isActive = selected[type] === item.id;
+        card.className = `card-custom ${isActive ? 'active' : ''}`;
+        
+        card.innerHTML = `
+            ${isActive ? '<i class="ti ti-check check-icon"></i>' : ''}
+            <div class="card-custom-body">
+                <span class="card-custom-title">${item.name}</span>
+                <p class="card-custom-price">${item.price === 0 ? 'Безкоштовно' : '+ ' + item.price + ' грн'}</p>
+            </div>
+        `;
+
+        card.onclick = () => selectOption(type, item.id);
+        container.appendChild(card);
     });
-  });
-
-  updateSummary();
-  updatePreview();
 }
 
-
-// ===== ПІДСУМОК =====
-
+// ===== 7. БЛОК ПІДСУМКУ =====
 function updateSummary() {
-  let text = "";
-  let total = 0;
+    const summaryText = document.getElementById("summaryText");
+    const totalPriceEl = document.getElementById("totalPrice");
+    const addToCartBtn = document.getElementById("addToCartBtn");
 
-  const shape = shapes.find(s => s.id === selected.shape);
-  const dough = doughTypes.find(d => d.id === selected.dough);
-  const flavor = flavors.find(f => f.id === selected.flavor);
-  const icing = icings.find(i => i.id === selected.icing);
+    let textParts = [];
+    let total = 0;
 
-  if (shape) {
-    text += "Форма: " + shape.name + "\n";
-    total += shape.price;
-  }
+    const config = [
+        { key: 'shape', group: 'shapes', label: 'Форма' },
+        { key: 'dough', group: 'doughs', label: 'Тісто' },
+        { key: 'icing', group: 'icings', label: 'Глазур' },
+        { key: 'topping', group: 'toppings', label: 'Посипка' }
+    ];
 
-  if (dough) {
-    text += "Тісто: " + dough.name + "\n";
-    total += dough.price;
-  }
+    config.forEach(item => {
+        const id = selected[item.key];
+        if (id) {
+            const data = ingredients[item.group].find(i => i.id === id);
+            textParts.push(`<b>${item.label}:</b> ${data.name}`);
+            total += data.price;
+        }
+    });
 
-  if (flavor) {
-    text += "Смак: " + flavor.name + "\n";
-    total += flavor.price;
-  }
+    summaryText.innerHTML = textParts.length > 0 ? textParts.join('<br>') : "Оберіть параметри...";
+    totalPriceEl.innerText = `${total} грн`;
 
-  if (icing) {
-    text += "Глазур: " + icing.name + "\n";
-    total += icing.price;
-  }
-
-  document.getElementById("summaryText").innerText =
-    text || "Нічого не вибрано";
-
-  document.getElementById("totalPrice").innerText =
-    total + " грн";
+    // Кнопка активна, якщо вибрано всі 4 параметри
+    if (selected.shape && selected.dough && selected.icing && selected.topping) {
+        addToCartBtn.disabled = false;
+    } else {
+        addToCartBtn.disabled = true;
+    }
 }
 
-
-// ===== КОШИК =====
-
+// ===== 8. КОШИК =====
 function addCustomToCart() {
-  if (!selected.shape || !selected.flavor || !selected.icing) {
-    alert("Обери всі параметри");
-    return;
-  }
+    const shape = ingredients.shapes.find(i => i.id === selected.shape);
+    const dough = ingredients.doughs.find(i => i.id === selected.dough);
+    const icing = ingredients.icings.find(i => i.id === selected.icing);
+    const topping = ingredients.toppings.find(i => i.id === selected.topping);
 
-  const shape = shapes.find(s => s.id === selected.shape);
-  const dough = doughTypes.find(d => d.id === selected.dough);
-  const flavor = flavors.find(f => f.id === selected.flavor);
-  const icing = icings.find(i => i.id === selected.icing);
+    const total = shape.price + dough.price + icing.price + topping.price;
+    const desc = `Печиво: ${shape.name}, ${dough.name} тісто, глазур ${icing.name}, посипка ${topping.name}`;
 
-  addToCart({
-    name: "Кастомне печиво 🍪",
-    price: shape.price + flavor.price + icing.price + (dough?.price || 0),
-    description: `
-      Форма: ${shape.name}
-      Тісто: ${dough?.name || "Класичне"}
-      Смак: ${flavor.name}
-      Глазур: ${icing.name}
-    `
-  });
+    addToCart({
+        id: `custom_${Date.now()}`,
+        name: "Кастомне печиво 🍪",
+        price: total,
+        description: desc,
+        image: document.getElementById("base").src
+    });
 }
 
-// ===== СТАРТ =====
-
-renderOptions(shapes, "shapes", "shape");
-renderOptions(doughTypes, "doughs", "dough");
-renderOptions(flavors, "flavors", "flavor");
-renderOptions(icings, "icings", "icing");
-
+document.addEventListener("DOMContentLoaded", updateUI);

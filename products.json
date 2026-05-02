@@ -76,7 +76,7 @@
     "name": "Кокосове печиво",
     "price": 55,
     "description": "Ароматне печиво з кокосовою стружкою",
-    "image": "images/cookie10.png",
+    "image": "images/cooki10.png",
     "category": "coconut"
   },
   {
@@ -92,7 +92,7 @@
     "name": "Печиво з арахісовою пастою",
     "price": 55,
     "description": "Насичений смак арахісу",
-    "image": "images/cookie12.png",
+    "image": "images/cooki12.png",
     "category": "nuts"
   },
   {
@@ -110,13 +110,5 @@
     "description": "Яскраве печиво з декором для свят",
     "image": "images/cooki14.png",
     "category": "special"
-  },
-  {
-    "id": 15,
-    "name": "Медове печиво",
-    "price": 50,
-    "description": "Ароматне печиво з натуральним медом",
-    "image": "images/cooki15.png",
-    "category": "classic"
   }
 ]

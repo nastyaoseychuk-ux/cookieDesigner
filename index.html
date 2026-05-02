@@ -30,7 +30,7 @@
         </script>
     </div>
 
-<section class="hero">
+<section class="hero reveal">
   <div class="hero-overlay">
     <h1 class="text1">Golden Crumbs</h1>
     <p class="p">
@@ -41,7 +41,7 @@
   </div>
 </section>
 
-<section>
+<section class="reveal">
   <div class="container">
     <h1 class="p">Популярні товари</h1>
 
@@ -55,30 +55,30 @@
 
   <hr>
 
-<section class="features">
+<section class="features reveal">
   <h2 class="features-title p">Чому саме ми?</h2>
 
   <div class="features-grid">
     <div class="feature-card">
-      <div class="icon">🍪</div>
+      <div class="icon"><i class="ti ti-cookie"></i></div>
       <h3>Свіжа випічка</h3>
       <p>Щодня зранку — без заморозки та компромісів</p>
     </div>
 
     <div class="feature-card">
-      <div class="icon">🎨</div>
+      <div class="icon"><i class="ti ti-palette"></i></div>
       <h3>Кастомізація</h3>
       <p>Створи ідеальне печиво під себе</p>
     </div>
 
     <div class="feature-card">
-      <div class="icon">🚚</div>
+      <div class="icon"><i class="ti ti-truck-delivery"></i></div>
       <h3>Швидка доставка</h3>
       <p>Отримаєш замовлення максимально швидко</p>
     </div>
 
     <div class="feature-card">
-      <div class="icon">❤️</div>
+      <div class="icon"><i class="ti ti-leaf"></i></div>
       <h3>Натуральні інгредієнти</h3>
       <p>Тільки якісні та перевірені продукти</p>
     </div>
@@ -87,8 +87,8 @@
 
   <hr>
 
-  <section class="section1">
-    <h2>Як це працює</h2>
+  <section class="section1 reveal">
+    <h2 class="p">Як це працює</h2>
     <div class="how-it-works">
       
       <div class="step-item">
@@ -131,8 +131,8 @@
 
   <hr>
 
-  <section class="section1">
-    <h2>Доставка і оплата</h2>
+  <section class="section1 reveal">
+    <h2 class="p">Доставка і оплата</h2>
     <div class="delivery-payment-card">
       
       <div class="info-item">
@@ -174,6 +174,11 @@
 
   <div id="header-placeholder"></div>
   <div id="footer-placeholder"></div>
+
+  <!-- Плаваюча кнопка кошика для мобільних -->
+<a href="cart.html" class="floating-cart" id="mobileCartBtn">
+  <i class="ti ti-shopping-cart"></i>
+</a>
   <script>
   fetch('footer.html')
     .then(response => response.text())
@@ -283,6 +288,28 @@ fetch("header.html")
   function button() {
     window.location.href = "cookieDesigner.html";
   }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const reveals = document.querySelectorAll(".reveal");
+
+    const revealOptions = {
+        threshold: 0.1, // Ефект спрацює, коли на екрані з'явиться 10% об'єкта
+        rootMargin: "0px 0px -50px 0px" // Анімація почнеться трохи вище нижнього краю екрана
+    };
+
+    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target); // Відмикаємо після появи, щоб не анімувалося туди-сюди
+            }
+        });
+    }, revealOptions);
+
+    reveals.forEach(reveal => {
+        revealOnScroll.observe(reveal);
+    });
+});
 </script>
 </body>
 </html>
