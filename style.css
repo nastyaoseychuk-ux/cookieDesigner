@@ -2410,3 +2410,46 @@ section ol li {
 .cart .btn-circle{
   text-decoration: none!important;
 }
+
+/* Стилі для телефонів та пристроїв із сенсорними екранами */
+@media (max-width: 900px), (hover: none) {
+  /* 1. Робимо кнопку завжди видимою і самостійною */
+  .card-btn {
+    opacity: 1; /* Робимо видимою (раніше було 0) */
+    transform: scale(1); /* Повертаємо нормальний розмір */
+    bottom: 15px; /* Відступ від низу */
+    right: 15px; /* Відступ від правого краю */
+    
+    /* Оскільки декоративне коло при наведенні ми вимкнемо, даємо кнопці власний фон */
+    background: var(--button); 
+    color: white;
+    border-radius: 50%; /* Робимо її круглою */
+    width: 42px;
+    height: 42px;
+    
+    /* Вирівнюємо іконку чітко по центру кнопки */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    
+    /* Додаємо легку тінь, щоб вона виглядала як клікабельний елемент */
+    box-shadow: 0 4px 10px rgba(139, 94, 60, 0.3);
+  }
+
+  /* 2. Прибираємо анімацію "декоративного кута" (кола), бо вона потрібна лише для ПК */
+  .card::after {
+    display: none;
+  }
+
+  /* 3. Вимикаємо "підстрибування" картки при тапі на телефоні, бо це збиває з пантелику */
+  .card:hover {
+    transform: none;
+    box-shadow: none; 
+  }
+  
+  /* 4. Залишаємо лише реакцію самої кнопки на натискання */
+  .card-btn:active {
+    background: var(--button-hover);
+  }
+}
