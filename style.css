@@ -9,10 +9,10 @@
   --button: #8b5e3c;
   --button-hover: #725035;
 
-  --bg-color: #fdf8f5;        /* Світлий бежевий фон */
-  --text-dark: #3e2723;       /* Темно-коричневий для тексту */
-  --accent-brown: #795548;    /* Коричневий для іконок та ліній */
-  --card-bg: #ffffff;         /* Білий для карток */
+  --bg-color: #fdf8f5;        
+  --text-dark: #3e2723;       
+  --accent-brown: #795548;    
+  --card-bg: #ffffff;         
   --shadow: 0 10px 30px rgba(62, 39, 35, 0.05);
 }
 
@@ -118,7 +118,7 @@ body {
   font-family: sans-serif;
 }
 
-/* HERO фон */
+
 .hero {
   height: 100vh;
   background: url("images/cooki.png") no-repeat center;
@@ -133,7 +133,7 @@ body {
   gap: 40px;
 }
 
-/* Напівпрозорий блок */
+
 .hero-overlay {
   background: rgba(217, 217, 217, 0.6);
   backdrop-filter: blur(0.05px);
@@ -143,7 +143,7 @@ body {
   max-width: 600px;
 }
 
-/* Заголовок */
+
 .hero-overlay h1 {
   font-size: 48px;
   font-family: serif;
@@ -156,14 +156,14 @@ body {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-15px); /* трохи вверх */
+    transform: translateY(-15px); 
   }
   100% {
-    transform: translateY(0); /* назад вниз */
+    transform: translateY(0); 
   }
 }
 
-/* Текст */
+
 .hero-overlay p {
   font-size: 18px;
   line-height: 1.5;
@@ -218,7 +218,7 @@ body {
   padding: 10px 20px;
 
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* щоб був поверх усього */
+  z-index: 1000; 
 }
 
 .header {
@@ -257,7 +257,7 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Лінія під текстом */
+
 .navbar .nav-link::after {
   content: "";
   position: absolute;
@@ -270,23 +270,23 @@ body {
   transform: translateX(-50%);
 }
 
-/* Hover ефект */
+
 .navbar .nav-link:hover {
   color: var(--button);
   transform: translateY(-2px);
 }
 
-/* Анімація лінії */
+
 .navbar .nav-link:hover::after {
   width: 100%;
 }
 
-/* Легке “світіння” */
+
 .navbar .nav-link:hover {
   text-shadow: 0 2px 8px rgba(139, 94, 60, 0.3);
 }
 
-/* Responsive navbar */
+
 @media (max-width: 768px) {
   .navbar {
     width: 100%;
@@ -311,7 +311,7 @@ body {
   transition: color 0.3s ease;
 }
 
-/* Плавна лінія під текстом */
+
 .nav-links a::after {
   content: "";
   position: absolute;
@@ -323,7 +323,7 @@ body {
   transition: width 0.3s ease;
 }
 
-/* Hover ефект */
+
 .nav-links a:hover {
   color: #8b5e3c;
 }
@@ -332,7 +332,7 @@ body {
   width: 100%;
 }
 
-/* Легке збільшення */
+
 .nav-links a:hover {
   transform: scale(1.05);
 }
@@ -346,7 +346,7 @@ body {
   flex-shrink: 0;
 }
 
-/* From Uiverse.io by cssbuttons-io */
+
 .btn {
   position: relative;
   font-size: 17px;
@@ -426,18 +426,18 @@ body {
   transition: all 0.4s;
 }
 
-/* hover */
+
 .button:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* анімація як у кнопки */
+
 .button:hover::after {
   transform: scale(1.4);
   opacity: 0.4;
 }
-/* Стилізація всіх секцій зі схожим дизайном */
+
 .container {
   max-width: 900px;
   width: 100%;
@@ -458,7 +458,7 @@ h1 {
   color: #333;
 }
 
-/* Дизайн самих карток */
+
 .card {
   position: relative;
   overflow: hidden;
@@ -495,7 +495,7 @@ h1 {
   width: 100%;
   height: 180px;
   object-fit: contain;
-  height: 160px; /* фікс */
+  height: 160px; 
 
   transition: 0.4s ease;
 
@@ -548,7 +548,7 @@ h1 {
   height: 100%;
   text-align: center;
 
-  margin: 0; /* прибираємо кривий відступ */
+  margin: 0; 
 }
 
 .card-body1 {
@@ -560,7 +560,7 @@ h1 {
   height: 100%;
   text-align: center;
 
-  margin: 0; /* прибираємо кривий відступ */
+  margin: 0; 
 }
 
 .card-body h3 {
@@ -683,13 +683,13 @@ h1 {
   color: white;
 }
 
-/* Додаткові стилі для слайдера (запрацюють після підключення класів) */
+
 .swiper {
   width: 100%;
   padding-bottom: 50px;
 }
 
-/* Стилізація параграфів, списків та іншого контенту */
+
 section p {
   color: var(--text2);
   line-height: 1.8;
@@ -707,7 +707,7 @@ section ol li {
   margin: 10px 0;
 }
 
-/* Стилізація для Swiper слайдів */
+
 .swiper-button-prev,
 .swiper-button-next {
   color: var(--button);
@@ -754,7 +754,7 @@ section ol li {
   font-size: 16px;
 }
 
-/* ефект */
+
 .btn-universal::after {
   content: "";
   position: absolute;
@@ -816,7 +816,7 @@ section ol li {
 
 @media (max-width: 600px) {
   .features-grid {
-    grid-template-columns: 1fr; /* а не 2fr */
+    grid-template-columns: 1fr; 
   }
 }
 
@@ -921,7 +921,7 @@ section ol li {
   margin-top: 100px;
 }
 
-/* === SIDEBAR === */
+
 .sidebar {
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(12px);
@@ -940,20 +940,20 @@ section ol li {
   height: fit-content;
 
   position: sticky;
-  top: 100px; /* відступ від верху (під navbar) */
+  top: 100px; 
 
   max-height: calc(100vh - 140px);
   overflow-y: auto;
 }
 
-/* заголовки */
+
 .sidebar h3 {
   margin: 10px 0 5px;
   font-size: 18px;
   color: var(--text2);
 }
 
-/* лейбли */
+
 .sidebar label {
   display: flex;
   align-items: center;
@@ -968,13 +968,13 @@ section ol li {
   border-radius: 8px;
 }
 
-/* hover */
+
 .sidebar label:hover {
   background: rgba(139, 94, 60, 0.08);
   transform: translateX(5px);
 }
 
-/* чекбокси */
+
 .sidebar input[type="checkbox"] {
   accent-color: var(--button);
   width: 16px;
@@ -982,13 +982,13 @@ section ol li {
   cursor: pointer;
 }
 
-/* активний стан */
+
 .sidebar input[type="checkbox"]:checked + span,
 .sidebar input[type="checkbox"]:checked {
   filter: brightness(0.9);
 }
 
-/* SELECT */
+
 #priceFilter {
   margin-top: 5px;
   padding: 10px;
@@ -1006,18 +1006,18 @@ section ol li {
   transition: 0.2s;
 }
 
-/* hover select */
+
 #priceFilter:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* фокус */
+
 #priceFilter:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(139, 94, 60, 0.3);
 }
 
-/* анімація */
+
 .sidebar {
   animation: fadeUp 0.6s ease;
 }
@@ -1098,12 +1098,12 @@ section ol li {
   filter: drop-shadow(0 20px 30px rgba(0,0,0,0.2));
 }
 
-/* анімація */
+
 .preview img.animate {
   transform: scale(1.1) rotate(5deg);
 }
 
-/* різні глазурі */
+
 .icing-white {
   filter: brightness(1.1);
 }
@@ -1112,7 +1112,7 @@ section ol li {
   filter: hue-rotate(300deg) saturate(1.4);
 }
 
-/* плавна поява */
+
 .options .card {
   opacity: 0;
   transform: translateY(20px);
@@ -1254,7 +1254,7 @@ section ol li {
       letter-spacing: 0.5px;
     }
 
-    /* Секція "Як це працює" */
+    
     .how-it-works {
       display: flex;
       justify-content: space-between;
@@ -1297,11 +1297,11 @@ section ol li {
       font-weight: 600;
     }
 
-    /* З'єднувальна лінія між кроками */
+    
     .how-it-works::before {
       content: '';
       position: absolute;
-      top: 40px; /* Половина висоти іконки */
+      top: 40px; 
       left: 15%;
       right: 15%;
       height: 2px;
@@ -1313,7 +1313,7 @@ section ol li {
       opacity: 0.4;
     }
 
-    /* Розділювач */
+    
     hr {
       border: 0;
       height: 1px;
@@ -1321,7 +1321,7 @@ section ol li {
       margin: 20px 0;
     }
 
-    /* Секція "Доставка і оплата" */
+    
     .delivery-payment-card {
       background-color: var(--card-bg);
       border-radius: 20px;
@@ -1349,7 +1349,7 @@ section ol li {
     .info-item svg {
       width: 45px;
       height: 45px;
-      stroke: #a67c52; /* Золотисто-коричневий акцент */
+      stroke: #a67c52; 
       stroke-width: 1.5;
       fill: none;
     }
@@ -1361,14 +1361,14 @@ section ol li {
       line-height: 1.4;
     }
 
-    /* Адаптивність для мобільних пристроїв */
+    
     @media (max-width: 768px) {
       .how-it-works {
         flex-direction: column;
         gap: 40px;
       }
       .how-it-works::before {
-        display: none; /* Ховаємо лінію на мобільних */
+        display: none; 
       }
       .delivery-payment-card {
         flex-direction: column;
@@ -1377,12 +1377,12 @@ section ol li {
       }
     }
 
-    /* --- СТИЛІ ФУТЕРА --- */
+    
     .site-footer {
-      background-color: var(--bg-color); /* Світлий бежевий фон */
+      background-color: var(--bg-color); 
       color: var(--text-dark);
       padding: 50px 20px 20px;
-      border-top: 1px solid rgba(121, 85, 72, 0.15); /* Тонка лінія зверху */
+      border-top: 1px solid rgba(121, 85, 72, 0.15); 
       font-family: 'Montserrat', sans-serif;
     }
 
@@ -1436,13 +1436,13 @@ section ol li {
   margin-bottom: 10px;
 }
 
-    /* Логотип та опис */
+    
     .footer-brand {
       flex: 1 1 300px;
     }
 
     .footer-logo {
-      font-family: 'Playfair Display', serif; /* Або той шрифт, яким написано лого */
+      font-family: 'Playfair Display', serif; 
       font-size: 1.8rem;
       font-style: italic;
       margin-top: 0;
@@ -1458,7 +1458,7 @@ section ol li {
       max-width: 300px;
     }
 
-    /* Заголовки колонок */
+    
     .site-footer h4 {
       font-size: 1.1rem;
       font-weight: 600;
@@ -1467,7 +1467,7 @@ section ol li {
       color: var(--accent-brown);
     }
 
-    /* Навігація */
+    
     .footer-links {
       flex: 1 1 200px;
     }
@@ -1492,11 +1492,11 @@ section ol li {
 
     .footer-links a:hover,
     .footer-contacts a:hover {
-      color: var(--accent-brown); /* Підсвічування при наведенні */
+      color: var(--accent-brown); 
       text-decoration: underline;
     }
 
-    /* Контакти */
+    
     .footer-contacts {
       flex: 1 1 250px;
     }
@@ -1511,7 +1511,7 @@ section ol li {
       text-decoration: none;
     }
 
-    /* Соціальні мережі */
+    
     .social-icons {
       display: flex;
       gap: 15px;
@@ -1543,7 +1543,7 @@ section ol li {
       height: 20px;
     }
 
-    /* Копірайт */
+    
     .footer-bottom {
       max-width: 1100px;
       margin: 40px auto 0;
@@ -1554,7 +1554,7 @@ section ol li {
       color: rgba(62, 39, 35, 0.6);
     }
 
-    /* Адаптивність для телефонів */
+    
     @media (max-width: 768px) {
       .footer-content {
         flex-direction: column;
@@ -1568,11 +1568,9 @@ section ol li {
       }
     }
 
-    /* ==========================================================================
-   КОНСТРУКТОР ПЕЧИВА (DESIGNER PAGE)
-   ========================================================================== */
+    
 
-/* 1. Основний макет */
+
 .designer-section {
     padding: 60px 20px;
     background-color: var(--background);
@@ -1584,15 +1582,15 @@ section ol li {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 420px 1fr; /* Ліва колонка фіксована, права тягнеться */
+    grid-template-columns: 420px 1fr; 
     gap: 50px;
     align-items: start;
 }
 
-/* 2. Ліва панель (Результат) */
+
 .designer-preview {
     position: sticky;
-    top: 100px; /* Відступ від верху при скролі */
+    top: 100px; 
     z-index: 10;
 }
 
@@ -1607,7 +1605,7 @@ section ol li {
     flex-direction: column;
 }
 
-/* Рамка для фото (Slot) */
+
 .cookie-display-frame {
     background: #fdfaf7;
     border: 2px dashed rgba(139, 94, 60, 0.25);
@@ -1635,7 +1633,7 @@ section ol li {
     filter: grayscale(1);
 }
 
-/* Написи та ціна */
+
 .badge {
     display: inline-block;
     align-self: center;
@@ -1690,7 +1688,7 @@ section ol li {
     font-weight: 800;
 }
 
-/* Кнопка "Додати" */
+
 .add-to-cart-big {
     width: 100%;
     padding: 18px;
@@ -1720,7 +1718,7 @@ section ol li {
     opacity: 0.7;
 }
 
-/* 3. Права панель (Опції) */
+
 .option-group {
     background: #ffffff;
     border-radius: 35px;
@@ -1750,14 +1748,14 @@ section ol li {
     margin: 0;
 }
 
-/* Сітка карток */
+
 .options-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 20px;
 }
 
-/* Картка інгредієнта */
+
 .card-custom {
     background: #fff;
     border: 2px solid #f8f6f4;
@@ -1802,7 +1800,7 @@ section ol li {
     font-weight: 700;
 }
 
-/* Іконка галочки */
+
 .check-icon {
     position: absolute;
     top: -10px;
@@ -1820,10 +1818,10 @@ section ol li {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* 4. Адаптивність (Mobile) */
+
 @media (max-width: 1024px) {
     .designer-container {
-        grid-template-columns: 1fr; /* Все в одну колонку */
+        grid-template-columns: 1fr; 
     }
 
     .designer-preview {
@@ -1848,7 +1846,7 @@ section ol li {
     }
 
     .options-grid {
-        grid-template-columns: repeat(2, 1fr); /* По 2 картки в ряд на малих екранах */
+        grid-template-columns: repeat(2, 1fr); 
         gap: 12px;
     }
 
@@ -1873,7 +1871,7 @@ section ol li {
             align-items: start;
         }
 
-        /* Список товарів */
+        
         .cart-items-wrapper {
             display: flex;
             flex-direction: column;
@@ -1904,7 +1902,7 @@ section ol li {
             height: 90px;
             object-fit: cover;
             border-radius: 15px;
-            background: #fff; /* Заглушка, якщо фото прозоре */
+            background: #fff; 
             padding: 5px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
@@ -1930,7 +1928,7 @@ section ol li {
             margin: 0;
         }
 
-        /* Контрол кількості (+ / -) */
+        
         .cart-quantity {
             display: flex;
             align-items: center;
@@ -1968,7 +1966,7 @@ section ol li {
             text-align: center;
         }
 
-        /* Кнопка видалення */
+        
         .cart-remove-btn {
             background: rgba(255, 240, 240, 0.8);
             color: #d9534f;
@@ -1991,7 +1989,7 @@ section ol li {
             box-shadow: 0 8px 15px rgba(217, 83, 79, 0.2);
         }
 
-        /* Блок підсумку (Summary) */
+        
         .cart-summary {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
@@ -2039,7 +2037,7 @@ section ol li {
             padding: 15px;
         }
 
-        /* Адаптивність */
+        
         @media (max-width: 900px) {
             .cart-layout {
                 grid-template-columns: 1fr;
@@ -2067,7 +2065,7 @@ section ol li {
             }
         }
 
-/* --- Універсальна плавна поява елементів при скролі --- */
+
 .reveal {
   opacity: 0;
   transform: translateY(40px); 
@@ -2080,13 +2078,13 @@ section ol li {
   transform: translateY(0);
 }
 
-/* Якщо поруч кілька елементів (наприклад, 3 картки), додавай ці затримки, щоб вони виринали по черзі */
+
 .reveal.delay-1 { transition-delay: 0.1s; }
 .reveal.delay-2 { transition-delay: 0.2s; }
 .reveal.delay-3 { transition-delay: 0.3s; }
 .reveal.delay-4 { transition-delay: 0.4s; }
 
-/* Відступ для контенту під фіксованим меню */
+
         .contact-page-wrapper {
             padding-top: 120px;
             padding-bottom: 60px;
@@ -2099,7 +2097,7 @@ section ol li {
             margin-bottom: 50px;
         }
 
-        /* Використовуємо твій фірмовий шрифт */
+        
         .contact-header h1 {
             font-family: "Italianno", cursive;
             font-size: 80px;
@@ -2114,7 +2112,7 @@ section ol li {
             font-size: 1.2rem;
         }
 
-        /* Сітка для карток контактів та форми */
+        
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -2124,7 +2122,7 @@ section ol li {
             padding: 0 20px;
         }
 
-        /* Використовуємо твій стиль option-group для карток */
+        
         .contact-card {
             background: #ffffff;
             border-radius: 35px;
@@ -2139,7 +2137,7 @@ section ol li {
             box-shadow: 0 20px 40px rgba(62, 39, 35, 0.1);
         }
 
-        /* Елементи списку контактів */
+        
         .contact-info-item {
             display: flex;
             align-items: center;
@@ -2196,7 +2194,7 @@ section ol li {
             color: var(--button);
         }
 
-        /* Стилізація форми у твоєму стилі */
+        
         .custom-input {
             width: 100%;
             padding: 15px 20px;
@@ -2222,7 +2220,7 @@ section ol li {
             min-height: 120px;
         }
 
-        /* Секція з картою */
+        
         .map-section {
             max-width: 1100px;
             margin: 60px auto 0;
@@ -2248,23 +2246,23 @@ section ol li {
         }
 
 
-/* Планшети та невеликі ноутбуки (ширина екрана до 900px) */
+
 @media (max-width: 900px) {
   .layout {
-    flex-direction: column; /* Ставимо сайдбар над контентом */
+    flex-direction: column; 
     padding: 10px;
     gap: 15px;
     margin-top: 100px;
   }
 
   .sidebar {
-    width: 100%; /* Сайдбар займає всю ширину */
+    width: 100%; 
     max-width: 100%;
-    position: static; /* Відключаємо залипання, щоб не перекривати екран при скролі */
+    position: static; 
     max-height: none;
     overflow-y: visible;
     
-    /* Робимо фільтри горизонтальними */
+    
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -2273,7 +2271,7 @@ section ol li {
     padding: 15px;
   }
 
-  /* Заголовки у фільтрах на всю ширину */
+  
   .sidebar h3 {
     width: 100%;
     margin-top: 5px;
@@ -2281,7 +2279,7 @@ section ol li {
     font-size: 16px;
   }
 
-  /* Чекбокси вишиковуємо в ряд */
+  
   .sidebar label {
     flex: 1 1 auto;
     justify-content: center;
@@ -2290,20 +2288,20 @@ section ol li {
     padding: 8px 12px;
   }
 
-  /* Випадний список (Select) на всю ширину */
+  
   #priceFilter {
     width: 100%;
     margin-top: 0;
   }
 
-  /* Центруємо картки товарів, щоб вони не притискалися до лівого краю */
+  
   #products {
     justify-content: center;
     gap: 20px;
   }
 }
 
-/* Смартфони (ширина екрана до 600px) */
+
 @media (max-width: 600px) {
   .layout {
     padding: 5px;
@@ -2315,19 +2313,19 @@ section ol li {
   }
 
   .sidebar label {
-    /* На дуже малих екранах краще, щоб кнопки фільтрів були трохи меншими */
+    
     font-size: 13px;
     padding: 6px 10px;
   }
 
   #products > div {
-    /* Робимо так, щоб картка товару підлаштовувалась під ширину екрана */
+    
     width: 100%; 
-    max-width: 320px; /* Але не ставала надто величезною */
+    max-width: 320px; 
   }
 
   .product-card {
-    height: auto; /* Дозволяємо картці розтягуватись по висоті, якщо текст довгий */
+    height: auto; 
     min-height: 380px;
   }
 }
@@ -2335,25 +2333,25 @@ section ol li {
 
 
 .floating-cart {
-    display: none; /* За замовчуванням ховаємо на ПК */
+    display: none; 
     position: fixed;
     bottom: 30px;
     right: 20px;
     width: 65px;
     height: 65px;
-    background: var(--button); /* Використовуємо твій фірмовий колір */
+    background: var(--button); 
     color: white;
     border-radius: 50%;
     text-align: center;
     line-height: 65px;
-    font-size: 32px; /* Розмір іконки */
+    font-size: 32px; 
     box-shadow: 0 10px 25px rgba(139, 94, 60, 0.4);
-    z-index: 9999; /* Щоб завжди була поверх усього */
+    z-index: 9999; 
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Ефект при натисканні/наведенні */
+
 .floating-cart:hover,
 .floating-cart:active {
     transform: translateY(-5px) scale(1.05);
@@ -2363,7 +2361,7 @@ section ol li {
 
 
 
-/* Вмикаємо кнопку ТІЛЬКИ на мобільних телефонах та планшетах */
+
 @media (max-width: 900px) {
     .floating-cart {
         display: block;
@@ -2371,7 +2369,7 @@ section ol li {
     }
 }
 
-/* Анімація м'якої появи при завантаженні сторінки на телефоні */
+
 @keyframes popIn {
     0% {
         opacity: 0;
@@ -2395,12 +2393,12 @@ section ol li {
   }
 }
 
-/* Десктоп */
+
 .floating-cart {
   display: none;
 }
 
-/* Мобілка */
+
 @media (max-width: 900px) {
   .floating-cart {
     display: block;
@@ -2411,44 +2409,43 @@ section ol li {
   text-decoration: none!important;
 }
 
-/* Стилі для телефонів та пристроїв із сенсорними екранами */
+
 @media (max-width: 900px), (hover: none) {
-  /* 1. Робимо кнопку завжди видимою і самостійною */
+  
   .card-btn {
-    opacity: 1; /* Робимо видимою (раніше було 0) */
-    transform: scale(1); /* Повертаємо нормальний розмір */
-    bottom: 15px; /* Відступ від низу */
-    right: 15px; /* Відступ від правого краю */
+    opacity: 1; 
+    transform: scale(1); 
+    bottom: 15px; 
+    right: 15px; 
     
-    /* Оскільки декоративне коло при наведенні ми вимкнемо, даємо кнопці власний фон */
     background: var(--button); 
     color: white;
-    border-radius: 50%; /* Робимо її круглою */
+    border-radius: 50%; 
     width: 42px;
     height: 42px;
     
-    /* Вирівнюємо іконку чітко по центру кнопки */
+    
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
     
-    /* Додаємо легку тінь, щоб вона виглядала як клікабельний елемент */
+    
     box-shadow: 0 4px 10px rgba(139, 94, 60, 0.3);
   }
 
-  /* 2. Прибираємо анімацію "декоративного кута" (кола), бо вона потрібна лише для ПК */
+  
   .card::after {
     display: none;
   }
 
-  /* 3. Вимикаємо "підстрибування" картки при тапі на телефоні, бо це збиває з пантелику */
+  
   .card:hover {
     transform: none;
     box-shadow: none; 
   }
   
-  /* 4. Залишаємо лише реакцію самої кнопки на натискання */
+  
   .card-btn:active {
     background: var(--button-hover);
   }
