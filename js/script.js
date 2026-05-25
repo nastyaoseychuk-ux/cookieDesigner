@@ -22,7 +22,7 @@ const ingredients = {
     ]
 };
 
-// ===== 2. СТАН =====
+// СТАН
 let selected = {
     shape: null,
     dough: null,
@@ -30,26 +30,26 @@ let selected = {
     topping: null
 };
 
-// ===== 3. ЛОГІКА ВИБОРУ =====
+// ЛОГІКА ВИБОРУ
 function selectOption(type, id) {
     selected[type] = id;
     updateUI();
 }
 
-// ===== 4. ОНОВЛЕННЯ ІНТЕРФЕЙСУ =====
+// ОНОВЛЕННЯ ІНТЕРФЕЙСУ
 function updateUI() {
     renderAllOptions(); 
     updatePreview();    
     updateSummary();    
 }
 
-// ===== 5. ПОПЕРЕДНІЙ ПЕРЕГЛЯД (Головне фото) =====
+//Головне фото
 function updatePreview() {
     const previewImg = document.getElementById("base");
     if (!previewImg) return;
 
     if (selected.shape) {
-        // 1. Починаємо формувати назву з базової форми (наприклад, "heart" або "square")
+        // 1. Починаємо формувати назву з базової форми 
         let fileName = selected.shape; 
 
         // 2. Якщо вибрано шоколадне тісто, додаємо "-choco" 
@@ -76,7 +76,6 @@ function updatePreview() {
         previewImg.style.opacity = "1";
         previewImg.style.filter = "none";
         
-        // СУПЕР-ФІШКА: Якщо ти ще не встигла намалювати якусь комбінацію 
         // (наприклад, heart-choco-white.png), браузер замість помилки покаже просто базову форму!
         previewImg.onerror = function() {
             console.warn(`Зображення ${fileName} ще не створено. Показую базову форму.`);
@@ -93,7 +92,7 @@ function updatePreview() {
     }
 }
 
-// ===== 6. РЕНДЕР КАРТОК =====
+//РЕНДЕР КАРТОК
 function renderAllOptions() {
     renderGroup(ingredients.shapes, "shapes", "shape");
     renderGroup(ingredients.doughs, "doughs", "dough");
@@ -124,7 +123,7 @@ function renderGroup(items, containerId, type) {
     });
 }
 
-// ===== 7. БЛОК ПІДСУМКУ =====
+//БЛОК ПІДСУМКУ
 function updateSummary() {
     const summaryText = document.getElementById("summaryText");
     const totalPriceEl = document.getElementById("totalPrice");
@@ -160,7 +159,7 @@ function updateSummary() {
     }
 }
 
-// ===== 8. КОШИК =====
+//КОШИК 
 function addCustomToCart() {
     const shape = ingredients.shapes.find(i => i.id === selected.shape);
     const dough = ingredients.doughs.find(i => i.id === selected.dough);

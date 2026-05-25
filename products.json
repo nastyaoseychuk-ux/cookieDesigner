@@ -72,14 +72,6 @@
     "category": "classic"
   },
   {
-    "id": 10,
-    "name": "Кокосове печиво",
-    "price": 55,
-    "description": "Ароматне печиво з кокосовою стружкою",
-    "image": "images/cooki10.png",
-    "category": "coconut"
-  },
-  {
     "id": 11,
     "name": "Печиво Oreo-стайл",
     "price": 60,

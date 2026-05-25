@@ -148,8 +148,6 @@ function decrease(id) {
     renderCart();
 }
 
-// --- Логіка модального вікна та ініціалізація подій ---
-// Запускаємо логіку тільки після завантаження всього DOM
 document.addEventListener("DOMContentLoaded", () => {
     renderCart();
 
